@@ -24,7 +24,6 @@
 
 <!-- Hero Section -->
 <div class="hero">
-  <!-- Cambia video.mp4 por tu archivo -->
   <video autoplay muted loop>
     <source src="video.mp4" type="video/mp4">
   </video>
@@ -47,37 +46,26 @@
 <!-- Formulario -->
 <div class="form-container">
   <h2>Reserva tu próxima aventura</h2>
-  <form method="GET" action="https://script.google.com/macros/s/AKfycbx2zXVUObvGOxTcNv6HACcJxUBJG6MlAVKVadj98_4e_nOUM7xqsxoQacPTukvSVhYkBw/exec" target="_blank">
-  <input type="text" name="nombre" placeholder="Nombre" required>
-  <input type="text" name="apellidos" placeholder="Apellidos" required>
-  <input type="tel" name="telefono" placeholder="Teléfono" required>
-  <input type="email" name="email" placeholder="Email" required>
-  <textarea name="masinfo" placeholder="Más info que deberíamos saber..." rows="4"></textarea>
-  <button type="submit">¡Quiero la próxima aventura!</button>
-</form>
+  <form id="leadForm">
+    <input type="text" name="nombre" placeholder="Nombre" required>
+    <input type="text" name="apellidos" placeholder="Apellidos" required>
+    <input type="tel" name="telefono" placeholder="Teléfono" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <textarea name="masinfo" placeholder="Más info que deberíamos saber..." rows="4"></textarea>
+    <button type="submit">¡Quiero la próxima aventura!</button>
+    <div class="confirmation">¡Gracias! Nos pondremos en contacto pronto.</div>
+  </form>
 </div>
 
 <script>
-// Formulario
+// Confirmación dinámica sin enviar datos a la hoja
 const form = document.getElementById('leadForm');
 const confirmation = document.querySelector('.confirmation');
 
 form.addEventListener('submit', e => {
   e.preventDefault();
-  const data = new FormData(form);
-  const params = new URLSearchParams();
-  for (const pair of data) { params.append(pair[0], pair[1]); }
-
-  fetch(form.action + "?" + params.toString(), { method: 'GET' })
-    .then(res => res.text())
-    .then(() => {
-      confirmation.style.display = 'block';
-      form.reset();
-    })
-    .catch(() => {
-      confirmation.textContent = 'Error al enviar, inténtalo de nuevo.';
-      confirmation.style.display = 'block';
-    });
+  confirmation.style.display = 'block';
+  form.reset();
 });
 
 // Carrusel
