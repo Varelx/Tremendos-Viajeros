@@ -208,7 +208,7 @@ footer{
   <input type="email" name="email" placeholder="Email" required>
   <textarea name="masinfo" placeholder="Más info que deberíamos saber..." rows="4"></textarea>
   <button type="submit">¡Quiero la próxima aventura!</button>
-  <div class="confirmation">¡Gracias! Nos pondremos en contacto para la próxima actividad.</div>
+  <div class="confirmation">¡Gracias! Nos pondremos en contacto pronto.</div>
 </form>
 
 <footer>
@@ -247,13 +247,20 @@ function createConfetti() {
 function burstConfetti(){ for(let i=0;i<100;i++){ createConfetti(); } }
 
 // Formulario
-const form=document.getElementById('leadForm');
-const confirmation=document.querySelector('.confirmation');
-form.addEventListener('submit', e=>{
+const form = document.getElementById('leadForm');
+const confirmation = document.querySelector('.confirmation');
+
+form.addEventListener('submit', e => {
   e.preventDefault();
-  fetch(form.action,{ method:'POST', body:new FormData(form), mode:'no-cors' })
-    .then(()=>{ confirmation.style.display='block'; form.reset(); burstConfetti(); })
-    .catch(()=>{ confirmation.textContent='Error al enviar, inténtalo de nuevo.'; confirmation.style.display='block'; });
+  fetch(form.action, { method: 'POST', body: new FormData(form), mode: 'no-cors' })
+    .then(() => {
+      confirmation.style.display = 'block';
+      form.reset();
+    })
+    .catch(() => {
+      confirmation.textContent = 'Error al enviar, inténtalo de nuevo.';
+      confirmation.style.display = 'block';
+    });
 });
 
 // Carrusel testimonios
