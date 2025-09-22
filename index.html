@@ -3,126 +3,213 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Experiencias Multiaventura</title>
+<title>Experiencias Multiaventura iOS26 Premium</title>
 <style>
-  /* Reset básico */
-  * {margin:0; padding:0; box-sizing:border-box; font-family: 'Arial', sans-serif;}
-  body {background:#f0f8ff; color:#333;}
+/* Reset y tipografía moderna */
+* {margin:0; padding:0; box-sizing:border-box; font-family:-apple-system, BlinkMacSystemFont,'Segoe UI', Roboto, sans-serif;}
+body {background:#f0f4f8; color:#1c1c1e; overflow-x:hidden; scroll-behavior:smooth;}
+h1,h2,h3 {font-weight:700;}
+a {text-decoration:none;}
+button {cursor:pointer;}
 
-  /* Secciones */
-  section {padding:60px 20px; text-align:center;}
-  h1, h2 {margin-bottom:20px; color:#1a1a1a;}
-  p {margin-bottom:20px; line-height:1.6;}
+/* Hero con video local y overlay */
+#hero {position:relative; width:100%; height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; overflow:hidden; color:white; perspective:1000px;}
+#hero .overlay {position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:0; transition:all 1s;}
+#hero video {position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:-1; opacity:0.5;}
+#hero h1 {font-size:3em; margin-bottom:20px; z-index:1; text-shadow:1px 1px 10px rgba(0,0,0,0.7); opacity:0; transform:translateY(-40px); transition:all 1s ease;}
+#hero p {font-size:1.3em; margin-bottom:30px; z-index:1; text-shadow:1px 1px 8px rgba(0,0,0,0.6); opacity:0; transform:translateY(-40px); transition:all 1s ease 0.3s;}
+#hero button {padding:15px 35px; background:linear-gradient(135deg,#ff6b35,#ffcc00); border:none; border-radius:22px; font-size:1.2em; color:white; box-shadow:0 10px 25px rgba(0,0,0,0.25); position:relative; overflow:hidden; z-index:1; transition:0.3s;}
+#hero button::after {content:""; position:absolute; width:100%; height:100%; top:0; left:0; pointer-events:none; background:rgba(255,255,255,0.2); border-radius:22px; opacity:0; transform:scale(0.8); transition:all 0.4s;}
+#hero button:hover::after {opacity:1; transform:scale(1.2);}
+#hero button:hover {transform:translateY(-3px) scale(1.05);}
 
-  /* Hero */
-  #hero {background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1950&q=80') center/cover no-repeat; color:white; height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-shadow: 1px 1px 4px rgba(0,0,0,0.6);}
-  #hero button {padding:15px 30px; background:#ff5722; color:white; border:none; border-radius:8px; font-size:1.2em; cursor:pointer; transition:0.3s;}
-  #hero button:hover {background:#e64a19;}
+/* Galería avanzada con videos hover */
+#galeria {display:flex; flex-wrap:wrap; justify-content:center; gap:20px; padding:60px 20px;}
+.actividad {position:relative; width:300px; height:200px; border-radius:22px; overflow:hidden; cursor:pointer; transition:transform 0.5s; perspective:1000px;}
+.actividad img, .actividad video {width:100%; height:100%; object-fit:cover; border-radius:22px; transition:transform 0.5s, opacity 0.5s;}
+.actividad video {position:absolute; top:0; left:0; opacity:0;}
+.actividad:hover video {opacity:1; transform:scale(1.05);}
+.actividad:hover img {opacity:0.25; transform:scale(1.05);}
+.actividad:hover {transform: rotateY(5deg) rotateX(3deg);}
 
-  /* Galería */
-  #galeria {display:flex; flex-wrap:wrap; justify-content:center; gap:20px;}
-  #galeria img {width:300px; height:200px; object-fit:cover; border-radius:10px; transition: transform 0.3s;}
-  #galeria img:hover {transform: scale(1.05);}
+/* Testimonios dinámicos */
+#testimonios {background:#e6f2ff; padding:60px 20px; overflow-x:auto; white-space:nowrap;}
+.test-container {display:flex; gap:20px; scroll-behavior:smooth;}
+.testimonial {min-width:300px; padding:25px; background:rgba(255,255,255,0.85); border-radius:22px; box-shadow:0 8px 25px rgba(0,0,0,0.12); backdrop-filter:blur(12px); flex-shrink:0; opacity:0; transform:translateY(20px); transition:all 0.8s ease;}
+.testimonial.visible {opacity:1; transform:translateY(0);}
 
-  /* Testimonios */
-  #testimonios {background:#e0f7fa; padding:60px 20px;}
-  .testimonial {margin:20px; padding:20px; background:white; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.1);}
+/* Formulario interactivo */
+#formulario {background:rgba(255,255,255,0.85); padding:60px 20px; border-radius:30px; backdrop-filter:blur(15px); max-width:600px; margin:40px auto; position:relative; box-shadow:0 8px 25px rgba(0,0,0,0.15);}
+#formulario form {display:flex; flex-direction:column; gap:15px; position:relative;}
+#formulario input, #formulario textarea {padding:15px; border-radius:15px; border:1px solid #ccc; font-size:1em; backdrop-filter:blur(5px); transition:0.3s;}
+#formulario input:focus, #formulario textarea:focus {border-color:#ff6b35; box-shadow:0 0 12px rgba(255,107,53,0.5);}
+#formulario button {padding:15px; border:none; background:linear-gradient(135deg,#ff6b35,#ffcc00); color:white; font-size:1.1em; border-radius:22px; cursor:pointer; transition:0.3s; box-shadow:0 8px 25px rgba(0,0,0,0.25); position:relative; overflow:hidden;}
+#formulario button::after {content:""; position:absolute; width:100%; height:100%; top:0; left:0; pointer-events:none; background:rgba(255,255,255,0.2); border-radius:22px; opacity:0; transform:scale(0.8); transition:all 0.4s;}
+#formulario button:hover::after {opacity:1; transform:scale(1.2);}
+#confirmacion {color:green; margin-top:15px; display:none; font-weight:bold; text-align:center; position:absolute; top:-40px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,0.05); padding:8px 15px; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.15);}
 
-  /* Formulario */
-  #formulario {background:#fff3e0; padding:60px 20px; border-radius:10px;}
-  #formulario form {max-width:500px; margin:0 auto; display:flex; flex-direction:column; gap:15px;}
-  #formulario input, #formulario textarea {padding:12px; border-radius:6px; border:1px solid #ccc; font-size:1em;}
-  #formulario button {padding:15px; border:none; background:#ff5722; color:white; font-size:1.1em; border-radius:8px; cursor:pointer; transition:0.3s;}
-  #formulario button:hover {background:#e64a19;}
-  #confirmacion {color:green; margin-top:15px; display:none;}
+/* Redes sociales */
+#redes {margin-top:40px; text-align:center;}
+#redes a {margin:0 15px; text-decoration:none; color:#ff6b35; font-weight:bold; transition:0.3s;}
+#redes a:hover {color:#e65a1f; transform:scale(1.05);}
 
-  /* Redes sociales */
-  #redes {margin-top:40px;}
-  #redes a {margin:0 10px; text-decoration:none; color:#ff5722; font-weight:bold;}
+/* Próxima aventura con countdown */
+#proxima {padding:40px 20px; text-align:center; background:#f0f4f8; border-radius:25px; margin:40px auto; max-width:600px; box-shadow:0 8px 25px rgba(0,0,0,0.15);}
+#proxima h3 {margin-bottom:10px;}
+#countdown {font-size:1.5em; font-weight:bold; margin-bottom:15px; color:#ff6b35;}
+#proxima button {padding:12px 25px; background:linear-gradient(135deg,#ff6b35,#ffcc00); color:white; border:none; border-radius:18px; cursor:pointer; transition:0.3s;}
+#proxima button:hover {transform:scale(1.05);}
 
-  /* Animaciones */
-  .fade-in {opacity:0; transform:translateY(30px); transition: all 1s ease-in-out;}
-  .fade-in.visible {opacity:1; transform:translateY(0);}
-  
-  /* Responsive */
-  @media(max-width:768px){
-    #galeria img {width:90%; height:auto;}
-  }
+/* Fade-in */
+.fade-in {opacity:0; transform:translateY(30px); transition: all 1s ease-in-out;}
+.fade-in.visible {opacity:1; transform:translateY(0);}
+
+/* Responsive */
+@media(max-width:768px){
+  .actividad {width:90%; height:auto;}
+  #hero h1 {font-size:2.2em;}
+  #hero p {font-size:1em;}
+}
 </style>
 </head>
 <body>
 
 <!-- Hero -->
 <section id="hero">
+  <div class="overlay"></div>
+  <video id="heroVideo" autoplay muted loop>
+    <source src="video.mp4" type="video/mp4">
+    Tu navegador no soporta la reproducción de video.
+  </video>
   <h1>Vive la Aventura al Máximo</h1>
   <p>Únete a nuestras experiencias multiaventura y descubre la naturaleza como nunca antes.</p>
   <button onclick="document.getElementById('formulario').scrollIntoView({behavior:'smooth'})">¡Quiero la próxima aventura!</button>
 </section>
 
-<!-- Galería -->
+<!-- Galería avanzada -->
 <section id="galeria">
-  <h2>Galería de Experiencias</h2>
-  <div>
-    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" class="fade-in">
-    <img src="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?auto=format&fit=crop&w=800&q=80" class="fade-in">
-    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80" class="fade-in">
-  </div>
+<h2>Galería de Experiencias</h2>
+<div class="actividad">
+  <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="">
+  <video src="https://www.w3schools.com/howto/rain.mp4" loop muted></video>
+</div>
+<div class="actividad">
+  <img src="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?auto=format&fit=crop&w=800&q=80" alt="">
+  <video src="https://www.w3schools.com/howto/forest.mp4" loop muted></video>
+</div>
+<div class="actividad">
+  <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80" alt="">
+  <video src="https://www.w3schools.com/howto/lake.mp4" loop muted></video>
+</div>
 </section>
 
 <!-- Testimonios -->
 <section id="testimonios">
-  <h2>Lo que dicen nuestros aventureros</h2>
-  <div class="testimonial fade-in">"Una experiencia inolvidable, los guías son increíbles!" - Marta R.</div>
-  <div class="testimonial fade-in">"El pack completo merece cada euro, volveré sin duda!" - Javier L.</div>
-  <div class="testimonial fade-in">"Kayak, senderismo y orientación todo en un fin de semana, ¡súper recomendado!" - Laura P.</div>
+<h2>Lo que dicen nuestros aventureros</h2>
+<div class="test-container">
+  <div class="testimonial fade-in">"Increíble experiencia, guías top!" - Marta R.</div>
+  <div class="testimonial fade-in">"Pack completo, volveré sin duda!" - Javier L.</div>
+  <div class="testimonial fade-in">"Kayak, senderismo y orientación en un fin de semana, ¡muy recomendable!" - Laura P.</div>
+</div>
 </section>
 
-<!-- Formulario -->
-<section id="formulario">
-  <h2>Apúntate a la próxima aventura</h2>
-  <form id="leadForm">
-    <input type="text" name="nombre" placeholder="Nombre" required>
-    <input type="text" name="apellidos" placeholder="Apellidos" required>
-    <input type="tel" name="telefono" placeholder="Teléfono" required>
-    <input type="email" name="email" placeholder="Email" required>
-    <textarea name="masinfo" placeholder="Más info que quieras contarnos..." rows="4"></textarea>
-    <button type="submit">¡Quiero la próxima aventura!</button>
-    <div id="confirmacion">Gracias, nos pondremos en contacto para la próxima actividad.</div>
-  </form>
+<!-- Próxima aventura -->
+<section id="proxima">
+<h3>Próxima aventura: Kayak y senderismo</h3>
+<div id="countdown">00d 00h 00m 00s</div>
+<button onclick="document.getElementById('formulario').scrollIntoView({behavior:'smooth'})">¡Apúntame!</button>
+</section>
 
-  <!-- Redes sociales -->
-  <div id="redes">
-    <a href="#" target="_blank">Instagram</a>
-    <a href="#" target="_blank">TikTok</a>
-    <a href="#" target="_blank">YouTube</a>
-  </div>
+<!-- Formulario interactivo -->
+<section id="formulario">
+<h2>Apúntate a la próxima aventura</h2>
+<form id="leadForm" action="https://formspree.io/f/manpwaod" method="POST">
+  <input type="text" name="nombre" placeholder="Nombre" required>
+  <input type="text" name="apellidos" placeholder="Apellidos" required>
+  <input type="tel" name="telefono" placeholder="Teléfono" required>
+  <input type="email" name="email" placeholder="Email" required>
+  <textarea name="masinfo" placeholder="Más info que quieras contarnos..." rows="4"></textarea>
+  <button type="submit">¡Quiero la próxima aventura!</button>
+  <div id="confirmacion">Gracias, nos pondremos en contacto para la próxima actividad.</div>
+</form>
+<div id="redes">
+  <a href="#" target="_blank">Instagram</a>
+  <a href="#" target="_blank">TikTok</a>
+  <a href="#" target="_blank">YouTube</a>
+</div>
 </section>
 
 <script>
-  // Animaciones scroll
-  const faders = document.querySelectorAll('.fade-in');
-  const appearOptions = { threshold: 0.2 };
-  const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll){
-    entries.forEach(entry => {
-      if(!entry.isIntersecting) return;
-      entry.target.classList.add('visible');
-      appearOnScroll.unobserve(entry.target);
-    });
-  }, appearOptions);
+// Video hero con inicio aleatorio
+const heroVideo = document.getElementById('heroVideo');
+heroVideo.addEventListener('loadedmetadata', ()=>{
+  heroVideo.currentTime = Math.random() * heroVideo.duration;
+});
 
-  faders.forEach(fader => appearOnScroll.observe(fader));
+// Animaciones hero y fade-in
+window.onload = () => {
+  document.querySelector('#hero h1').style.opacity='1';
+  document.querySelector('#hero h1').style.transform='translateY(0)';
+  document.querySelector('#hero p').style.opacity='1';
+  document.querySelector('#hero p').style.transform='translateY(0)';
+};
 
-  // Formulario
-  const form = document.getElementById('leadForm');
-  const confirmMsg = document.getElementById('confirmacion');
-
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    // Aquí puedes añadir integración con tu servidor o servicio de email
-    confirmMsg.style.display = 'block';
-    form.reset();
+// Fade-in testimonios
+const faders=document.querySelectorAll('.fade-in');
+const appearOptions={threshold:0.2};
+const appearOnScroll=new IntersectionObserver(function(entries, observer){
+  entries.forEach(entry=>{
+    if(!entry.isIntersecting) return;
+    entry.target.classList.add('visible');
+    observer.unobserve(entry.target);
   });
-</script>
+}, appearOptions);
+faders.forEach(fader => appearOnScroll.observe(fader));
 
+// Formulario confeti y confirmación
+const form=document.getElementById('leadForm');
+const confirmMsg=document.getElementById('confirmacion');
+form.addEventListener('submit',function(e){
+  confirmMsg.style.display='block';
+  confetti();
+});
+
+// Confeti avanzado
+function confetti(){
+  const duration=2000,end=Date.now()+duration;
+  (function frame(){
+    const colors=['#ff6b35','#ffcc00','#00bfff','#00ff7f'];
+    for(let i=0;i<7;i++){
+      const p=document.createElement('div');
+      p.style.position='fixed'; p.style.width='10px'; p.style.height='10px'; p.style.background=colors[Math.floor(Math.random()*colors.length)];
+      p.style.top=Math.random()*window.innerHeight+'px'; p.style.left=Math.random()*window.innerWidth+'px';
+      p.style.borderRadius='50%'; p.style.zIndex=9999; document.body.appendChild(p);
+      setTimeout(()=>{p.remove()},700);
+    }
+    if(Date.now()<end) requestAnimationFrame(frame);
+  })();
+}
+
+// Videos hover play
+document.querySelectorAll('.actividad').forEach(act=>{
+  const video=act.querySelector('video');
+  act.addEventListener('mouseenter',()=>video.play());
+  act.addEventListener('mouseleave',()=>video.pause());
+});
+
+// Countdown próxima aventura
+const countdownEl=document.getElementById('countdown');
+const nextDate=new Date();
+nextDate.setDate(nextDate.getDate()+7); // ejemplo: 7 días desde hoy
+setInterval(()=>{
+  const now=new Date();
+  const diff=nextDate-now;
+  const d=Math.floor(diff/1000/60/60/24);
+  const h=Math.floor((diff/1000/60/60)%24);
+  const m=Math.floor((diff/1000/60)%60);
+  const s=Math.floor((diff/1000)%60);
+  countdownEl.textContent=`${d}d ${h}h ${m}m ${s}s`;
+},1000);
+</script>
 </body>
 </html>
