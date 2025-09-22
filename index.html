@@ -3,240 +3,222 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tremendos Viajeros - Turismo Activo</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-body, html { margin:0; padding:0; font-family:'Inter',sans-serif; background:#f5f5f7; scroll-behavior:smooth; }
-h1,h2,p{margin:0;}
-a{text-decoration:none;}
+<title>Tremendos Viajeros - Turismo Activo en Galicia</title>
+<meta name="description" content="Vive experiencias únicas de turismo activo en Galicia. Kayak, senderismo, orientación y aventuras con alojamiento incluido.">
+<meta name="keywords" content="turismo activo, Galicia, kayak, senderismo, orientación, aventuras fin de semana, multiactividad, Tremendos Viajeros">
+<meta name="robots" content="index, follow">
 
-/* Header con imagen + gradiente overlay */
+<!-- Open Graph / Social Media -->
+<meta property="og:title" content="Tremendos Viajeros - Turismo Activo en Galicia">
+<meta property="og:description" content="Vive experiencias únicas de turismo activo en Galicia. Kayak, senderismo, orientación y aventuras con alojamiento incluido.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tusitioweb.com/">
+<meta property="og:image" content="https://tusitioweb.com/imagen.jpg">
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* RESET y BODY */
+body, html { margin:0; padding:0; font-family:'Inter',sans-serif; background:#f5f5f7; scroll-behavior:smooth; }
+h1,h2,h3,p,li{margin:0; padding:0;}
+a{text-decoration:none; color:inherit;}
+ul{list-style:none; padding:0;}
+img, video{max-width:100%; display:block; border-radius:12px;}
+
+/* HEADER HERO */
 header{
-  position:relative;
-  height:100vh;
-  text-align:center;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#fff;
-  overflow:hidden;
+  position:relative; height:100vh; display:flex; flex-direction:column;
+  justify-content:center; align-items:center; text-align:center; color:#fff;
   background: url('imagen.jpg') center center / cover no-repeat;
 }
 header::before{
-  content:"";
-  position:absolute;
-  top:0; left:0;
-  width:100%; height:100%;
-  background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.6));
-  z-index:0;
+  content:""; position:absolute; top:0; left:0; width:100%; height:100%;
+  background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.6)); z-index:0;
 }
-.header-content{
-  position:relative;
-  z-index:1;
-}
-header h1{
-  font-size:3rem;
-  margin-bottom:1rem;
-  opacity:0;
-  transform:translateY(30px);
-  transition: all 1s ease;
-}
-header p{
-  font-size:1.2rem;
-  margin-bottom:2rem;
-  opacity:0;
-  transform:translateY(30px);
-  transition: all 1s ease 0.3s;
-}
-header .cta-button{
-  display:inline-block;
-  padding:1rem 2rem;
-  background:#ff5a5f;
-  color:#fff;
-  font-weight:700;
-  border-radius:50px;
-  cursor:pointer;
-  font-size:1rem;
-  transition: all 0.3s ease;
-  opacity:0;
-  transform:translateY(30px);
-}
-header .cta-button:hover{
-  transform: scale(1.1) translateY(-2px);
-  background:#e04e50;
-}
+.header-content{position:relative; z-index:1; max-width:90%;}
+header h1{ font-size:3rem; font-weight:700; margin-bottom:1rem; opacity:0; transform:translateY(30px); transition: all 1s ease;}
+header p{ font-size:1.2rem; margin-bottom:2rem; opacity:0; transform:translateY(30px); transition: all 1s ease 0.3s;}
+.cta-button{display:inline-block; padding:1rem 2rem; background:#ff5a5f; color:#fff; font-weight:700; border-radius:50px; cursor:pointer; font-size:1rem; transition: all 0.3s ease; opacity:0; transform:translateY(30px);}
+.cta-button:hover{ transform: scale(1.1) translateY(-2px); background:#e04e50; }
 
-/* Testimonios */
-.testimonios-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-}
-.testimonial {
-  background:#fff;
-  padding:1.5rem;
-  border-radius:20px;
-  min-width:300px;
-  max-width:400px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.1);
-  flex-shrink:0;
-  transform-style: preserve-3d;
-  transition: transform 0.5s ease, opacity 0.5s ease;
-}
-.testimonial:hover {
-  transform: scale(1.05);
-}
+/* SECCIONES */
+section{padding:4rem 2rem; text-align:center;}
+section h2{font-size:2rem; margin-bottom:2rem; color:#333;}
 
-/* Formulario local */
-form{
-  background:rgba(255,255,255,0.95);
-  padding:2rem;
-  border-radius:15px;
-  max-width:500px;
-  width:90%;
-  margin:4rem auto;
-  box-shadow:0 10px 25px rgba(0,0,0,0.1);
-  opacity:0;
-  transform:translateY(30px);
-  transition: all 1s ease 0.6s;
-}
-form input, form textarea, form button{
-  width:100%;
-  padding:0.8rem;
-  margin-bottom:1rem;
-  border-radius:8px;
-  border:1px solid #ccc;
-  font-size:1rem;
-}
-form button{
-  background:#ff5a5f;
-  color:#fff;
-  border:none;
-  cursor:pointer;
-  font-weight:700;
-  transition: all 0.3s ease;
-}
+/* ACTIVIDADES */
+.activities-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:2rem; max-width:1200px; margin:0 auto;}
+.activity{ background:#fff; padding:1.5rem; border-radius:15px; box-shadow:0 10px 25px rgba(0,0,0,0.1); transition: transform 0.3s ease; opacity:0; transform:translateY(30px);}
+.activity:hover{ transform: scale(1.03); }
+.activity h3{margin-bottom:0.5rem; color:#ff5a5f;}
+.activity p{color:#555;}
+
+/* TESTIMONIOS */
+.testimonios-grid{ display:flex; flex-wrap:wrap; justify-content:center; gap:2rem;}
+.testimonial{ background:#fff; padding:1.5rem; border-radius:20px; min-width:300px; max-width:400px; box-shadow:0 10px 25px rgba(0,0,0,0.1); flex-shrink:0; transition: transform 0.5s ease, opacity 0.5s ease; opacity:0; transform:translateY(30px);}
+.testimonial:hover{ transform: scale(1.05); }
+.testimonial span{ display:block; margin-top:0.5rem; color:#ff5a5f; font-weight:600;}
+
+/* GALERÍA */
+.gallery{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem; max-width:1200px; margin:0 auto;}
+
+/* FAQ */
+.faq-item{background:#fff; padding:1rem 1.5rem; border-radius:12px; margin-bottom:1rem; text-align:left; cursor:pointer; transition: all 0.3s ease;}
+.faq-item:hover{background:#f0f0f5;}
+.faq-item h4{margin-bottom:0.5rem; color:#ff5a5f;}
+.faq-item p{display:none; color:#555;}
+
+/* FORMULARIO */
+form{ background:rgba(255,255,255,0.95); padding:2rem; border-radius:15px; max-width:500px; width:90%; margin:2rem auto; box-shadow:0 10px 25px rgba(0,0,0,0.1); opacity:0; transform:translateY(30px); transition: all 1s ease 0.6s;}
+form input, form textarea, form button{ width:100%; padding:0.8rem; margin-bottom:1rem; border-radius:8px; border:1px solid #ccc; font-size:1rem;}
+form button{ background:#ff5a5f; color:#fff; border:none; cursor:pointer; font-weight:700; transition: all 0.3s ease;}
 form button:hover{ transform:scale(1.05); background:#e04e50; }
-.confirmation{
-  display:none;
-  text-align:center;
-  color:#28a745;
-  font-weight:700;
-  margin-top:1rem;
-}
+.confirmation{display:none; text-align:center; color:#28a745; font-weight:700; margin-top:1rem;}
 
-/* Footer */
-footer{
-  text-align:center;
-  padding:2rem;
-  font-size:0.9rem;
-  color:#666;
-  background:#fff;
-}
+/* FOOTER */
+footer{ text-align:center; padding:2rem; font-size:0.9rem; color:#666; background:#fff; }
 
-/* Confeti */
-.confetti-piece{
-  position:absolute;
-  width:10px;
-  height:10px;
-  opacity:0.8;
-  z-index:9999;
-  border-radius:3px;
-}
-
-@media(max-width:600px){
-  header h1{ font-size:2rem; }
-  header p{ font-size:1rem; }
-  .testimonial{ min-width:250px; }
-}
+/* RESPONSIVE */
+@media(max-width:600px){ header h1{ font-size:2rem; } header p{ font-size:1rem; } .testimonial{ min-width:250px; } }
 </style>
+
+<!-- JSON-LD para SEO avanzado -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TouristAttraction",
+  "name": "Tremendos Viajeros",
+  "description": "Vive experiencias únicas de turismo activo en Galicia. Kayak, senderismo, orientación y aventuras con alojamiento incluido.",
+  "image": "https://tusitioweb.com/imagen.jpg",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Ourense",
+    "addressRegion": "Galicia",
+    "addressCountry": "ES"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 42.3398,
+    "longitude": -7.8646
+  },
+  "telephone": "+34 600 000 000",
+  "priceRange": "€200",
+  "review": [
+    {
+      "@type": "Review",
+      "author": "Ana P.",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "reviewBody": "Una experiencia inolvidable, los guías son increíbles."
+    },
+    {
+      "@type": "Review",
+      "author": "Carlos M.",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "reviewBody": "Kayak y senderismo combinados, todo perfecto."
+    }
+  ]
+}
+</script>
+
 </head>
 <body>
 
 <header>
   <div class="header-content">
     <h1>Tremendos Viajeros</h1>
-    <p>Vive experiencias únicas de turismo activo. ¡Kayak, senderismo y más!</p>
+    <p>Vive experiencias únicas de turismo activo en Galicia. ¡Kayak, senderismo y más!</p>
     <div class="cta-button" onclick="document.getElementById('leadForm').scrollIntoView({behavior:'smooth'})">¡Únete a la próxima aventura!</div>
   </div>
 </header>
+
+<section id="actividades">
+  <h2>Nuestras Actividades</h2>
+  <div class="activities-grid">
+    <div class="activity">
+      <h3>Kayak</h3>
+      <p>Disfruta de rutas guiadas en kayak por ríos y embalses de Galicia, adaptadas a todos los niveles.</p>
+    </div>
+    <div class="activity">
+      <h3>Senderismo</h3>
+      <p>Recorre paisajes espectaculares con rutas de senderismo de medio día o fin de semana completo.</p>
+    </div>
+    <div class="activity">
+      <h3>Orientación</h3>
+      <p>Aprende a orientarte con mapas y brújula mientras exploras la naturaleza gallega.</p>
+    </div>
+    <div class="activity">
+      <h3>Multiactividad</h3>
+      <p>Combina varias actividades en un mismo pack: kayak, senderismo y aventura para todos.</p>
+    </div>
+  </div>
+</section>
+
+<section id="galeria">
+  <h2>Galería de Experiencias</h2>
+  <div class="gallery">
+    <img src="foto1.jpg" alt="Kayak en Galicia" loading="lazy">
+    <img src="foto2.jpg" alt="Senderismo en Galicia" loading="lazy">
+    <video src="video1.mp4" controls preload="metadata" loading="lazy"></video>
+    <img src="foto3.jpg" alt="Orientación en la naturaleza" loading="lazy">
+  </div>
+</section>
 
 <section class="testimonios">
   <h2>Lo que dicen nuestros aventureros</h2>
   <div class="testimonios-grid">
     <div class="testimonial"><p>"Una experiencia inolvidable, los guías son increíbles."</p><span>- Ana P.</span></div>
     <div class="testimonial"><p>"Kayak y senderismo combinados, todo perfecto."</p><span>- Carlos M.</span></div>
-    <div class="testimonial"><p>"Me encantó el alojamiento y la organización."</p><span>- Laura R.</span></div>
-    <div class="testimonial"><p>"Diversión asegurada, muy recomendable."</p><span>- Javier L.</span></div>
   </div>
+  <div class="cta-button" onclick="document.getElementById('leadForm').scrollIntoView({behavior:'smooth'})">¡Quiero la próxima aventura!</div>
+</section>
+
+<section id="faq">
+  <h2>Preguntas Frecuentes</h2>
+  <div class="faq-item"><h4>¿Qué incluye el pack de aventura?</h4><p>Alojamiento, desayuno y cena, actividades guiadas, seguro de vida y materiales.</p></div>
+  <div class="faq-item"><h4>¿Necesito experiencia previa?</h4><p>No, las actividades están adaptadas a todos los niveles y edades.</p></div>
 </section>
 
 <form id="leadForm">
   <input type="text" name="nombre" placeholder="Nombre" required>
-  <input type="text" name="apellidos" placeholder="Apellidos" required>
-  <input type="tel" name="telefono" placeholder="Teléfono" required>
   <input type="email" name="email" placeholder="Email" required>
-  <textarea name="masinfo" placeholder="Más info que deberíamos saber..." rows="4"></textarea>
+  <input type="tel" name="telefono" placeholder="Teléfono" required>
+  <textarea name="mensaje" placeholder="Más info (opcional)" rows="3"></textarea>
   <button type="submit">¡Quiero la próxima aventura!</button>
   <div class="confirmation">¡Recibido! Nos pondremos en contacto para la próxima actividad.</div>
 </form>
 
 <footer>
-  © 2025 Tremendos Viajeros. Todos los derechos reservados.
+  © 2025 Tremendos Viajeros. Todos los derechos reservados.  
+  <br>Contacto: info@tremendosviajeros.com
 </footer>
 
 <script>
 // Animaciones al scroll
-const faders = document.querySelectorAll('header h1, header p, .cta-button, form, .testimonial');
+const faders = document.querySelectorAll('header h1, header p, .cta-button, form, .testimonial, .activity');
 const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
 const appearOnScroll = new IntersectionObserver((entries, observer)=>{
   entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.style.opacity='1';
-      entry.target.style.transform='translateY(0)';
-      observer.unobserve(entry.target);
-    }
+    if(entry.isIntersecting){ entry.target.style.opacity='1'; entry.target.style.transform='translateY(0)'; observer.unobserve(entry.target); }
   });
 }, appearOptions);
 faders.forEach(fader=>appearOnScroll.observe(fader));
 
-// Confeti
-function createConfetti() {
-  const confetti = document.createElement('div');
-  confetti.className = 'confetti-piece';
-  confetti.style.left = Math.random()*window.innerWidth + 'px';
-  confetti.style.backgroundColor = `hsl(${Math.random()*360},100%,50%)`;
-  document.body.appendChild(confetti);
-  let top=0;
-  const fall=setInterval(()=>{
-    top+=Math.random()*5+2;
-    confetti.style.top=top+'px';
-    if(top>window.innerHeight){ confetti.remove(); clearInterval(fall); }
-  },20);
-}
-function burstConfetti(){ for(let i=0;i<100;i++){ createConfetti(); } }
+// FAQ toggle
+document.querySelectorAll('.faq-item').forEach(item=>{
+  item.addEventListener('click', ()=>{
+    const p = item.querySelector('p');
+    p.style.display = (p.style.display==='block') ? 'none' : 'block';
+  });
+});
 
-// Formulario local sin envío
+// Formulario simple
 const form = document.getElementById('leadForm');
 const confirmation = document.querySelector('.confirmation');
 form.addEventListener('submit', e=>{
   e.preventDefault();
   confirmation.style.display='block';
-  burstConfetti();
   form.reset();
 });
-
-// Carrusel automático y manual
-const track=document.querySelector('.carousel-track');
-const prevBtn=document.querySelector('.prev');
-const nextBtn=document.querySelector('.next');
-const testimonials=document.querySelectorAll('.testimonial');
-let index=0;
-function updateCarousel(){ track.style.transform=`translateX(-${index*420}px)`; }
-nextBtn.addEventListener('click',()=>{ index=(index+1)%testimonials.length; updateCarousel(); });
-prevBtn.addEventListener('click',()=>{ index=(index-1+testimonials.length)%testimonials.length; updateCarousel(); });
-setInterval(()=>{ index=(index+1)%testimonials.length; updateCarousel(); },5000);
 </script>
 </body>
 </html>
