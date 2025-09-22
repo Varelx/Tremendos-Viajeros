@@ -201,7 +201,7 @@ footer{
   </div>
 </section>
 
-<form id="leadForm" method="POST" action="https://script.google.com/macros/s/AKfycbyGEh1QGVsS04d1t29QBelS6EmNqznvTsaDdFTIQAjlzs2kPGhh-oVLIZyGBt3TnVKHpA/exec">
+<form id="leadForm" method="POST" action="https://script.google.com/macros/s/AKfycbx2zXVUObvGOxTcNv6HACcJxUBJG6MlAVKVadj98_4e_nOUM7xqsxoQacPTukvSVhYkBw/exec">
   <input type="text" name="nombre" placeholder="Nombre" required>
   <input type="text" name="apellidos" placeholder="Apellidos" required>
   <input type="tel" name="telefono" placeholder="Teléfono" required>
@@ -210,6 +210,25 @@ footer{
   <button type="submit">¡Quiero la próxima aventura!</button>
   <div class="confirmation">¡Gracias! Nos pondremos en contacto para la próxima actividad.</div>
 </form>
+
+<script>
+const form = document.getElementById('leadForm');
+const confirmation = document.querySelector('.confirmation');
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  fetch(form.action, { method: 'POST', body: new FormData(form), mode: 'no-cors' })
+    .then(() => {
+      confirmation.style.display = 'block';
+      form.reset();
+    })
+    .catch(() => {
+      confirmation.textContent = 'Error al enviar, inténtalo de nuevo.';
+      confirmation.style.display = 'block';
+    });
+});
+</script>
+
 
 <footer>
   © 2025 Tremendos Viajeros. Todos los derechos reservados.
