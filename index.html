@@ -11,7 +11,7 @@ body, html { margin:0; padding:0; font-family:'Inter',sans-serif; background:#f5
 h1,h2,p{margin:0;}
 a{text-decoration:none;}
 
-/* Header */
+/* Header con imagen de fondo */
 header{
   position:relative;
   height:100vh;
@@ -21,20 +21,21 @@ header{
   display:flex;
   align-items:center;
   justify-content:center;
+  background: url('imagen.jpg') center center / cover no-repeat;
 }
-header video{
+header::before{
+  content:"";
   position:absolute;
   top:0;
   left:0;
   width:100%;
   height:100%;
-  object-fit:cover;
-  z-index:-1;
+  background: rgba(0,0,0,0.5); /* 50% transparencia */
+  z-index:0;
 }
 .header-content{
   position:relative;
-  z-index:10;
-  text-align:center;
+  z-index:1;
 }
 header h1{
   font-size:3rem;
@@ -179,10 +180,6 @@ footer{
 <body>
 
 <header>
-  <video autoplay loop muted playsinline>
-    <source src="video.mp4" type="video/mp4">
-    Tu navegador no soporta video.
-  </video>
   <div class="header-content">
     <h1>Tremendos Viajeros</h1>
     <p>Vive experiencias únicas de turismo activo. ¡Kayak, senderismo y más!</p>
@@ -233,13 +230,6 @@ const appearOnScroll = new IntersectionObserver((entries, observer)=>{
 }, appearOptions);
 faders.forEach(fader=>appearOnScroll.observe(fader));
 
-// Parallax video
-window.addEventListener('scroll', ()=>{
-  const video = document.querySelector('header video');
-  const scrollY = window.scrollY;
-  video.style.transform = `translateY(${scrollY*0.3}px)`;
-});
-
 // Confeti
 function createConfetti() {
   const confetti = document.createElement('div');
@@ -282,7 +272,7 @@ let index=0;
 function updateCarousel(){ track.style.transform=`translateX(-${index*420}px)`; }
 nextBtn.addEventListener('click',()=>{ index=(index+1)%testimonials.length; updateCarousel(); });
 prevBtn.addEventListener('click',()=>{ index=(index-1+testimonials.length)%testimonials.length; updateCarousel(); });
-setInterval(()=>{ index=(index+1)%testimonials.length; updateCarousel(); },5000); // auto
+setInterval(()=>{ index=(index+1)%testimonials.length; updateCarousel(); },5000);
 </script>
 </body>
 </html>
