@@ -4,86 +4,276 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tremendos Viajeros - Turismo Activo</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  body, html { margin:0; padding:0; font-family: Arial, sans-serif; }
-  .hero { position: relative; width:100%; height:100vh; overflow:hidden; display:flex; align-items:center; justify-content:center; color:white; text-align:center; }
-  .hero video, .hero img { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; opacity:0.5; z-index:0; }
-  .hero h1 { position:relative; z-index:1; font-size:3em; }
-  .testimonials { max-width:800px; margin:50px auto; overflow:hidden; }
-  .carousel-track { display:flex; transition:transform 0.5s ease; gap:16px; }
-  .testimonial { min-width:300px; background:#f2f2f2; padding:20px; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.1); }
-  .form-container { max-width:600px; margin:50px auto; padding:20px; background:#fff; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.1); }
-  input, textarea, button { width:100%; margin:10px 0; padding:10px; border-radius:5px; border:1px solid #ccc; }
-  button { background:#007BFF; color:#fff; border:none; cursor:pointer; transition:0.3s; }
-  button:hover { background:#0056b3; }
-  .confirmation { display:none; margin-top:15px; color:green; font-weight:bold; }
-  .carousel-buttons { display:flex; justify-content:space-between; max-width:800px; margin:10px auto; }
+body, html { margin:0; padding:0; font-family:'Inter',sans-serif; background:#f5f5f7; scroll-behavior:smooth; }
+h1,h2,p{margin:0;}
+a{text-decoration:none;}
+
+/* Header con imagen + gradiente overlay */
+header{
+  position:relative;
+  height:100vh;
+  text-align:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  overflow:hidden;
+  background: url('imagen.jpg') center center / cover no-repeat;
+}
+header::before{
+  content:"";
+  position:absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.6));
+  z-index:0;
+}
+.header-content{
+  position:relative;
+  z-index:1;
+}
+header h1{
+  font-size:3rem;
+  margin-bottom:1rem;
+  opacity:0;
+  transform:translateY(30px);
+  transition: all 1s ease;
+}
+header p{
+  font-size:1.2rem;
+  margin-bottom:2rem;
+  opacity:0;
+  transform:translateY(30px);
+  transition: all 1s ease 0.3s;
+}
+header .cta-button{
+  display:inline-block;
+  padding:1rem 2rem;
+  background:#ff5a5f;
+  color:#fff;
+  font-weight:700;
+  border-radius:50px;
+  cursor:pointer;
+  font-size:1rem;
+  transition: all 0.3s ease;
+  opacity:0;
+  transform:translateY(30px);
+}
+header .cta-button:hover{
+  transform: scale(1.1) translateY(-2px);
+  background:#e04e50;
+}
+
+/* Testimonios */
+.testimonios{
+  padding:4rem 1rem;
+  text-align:center;
+  background:#f5f5f7;
+}
+.testimonios h2{
+  font-size:2rem;
+  margin-bottom:2rem;
+}
+.carousel{
+  display:flex;
+  overflow:hidden;
+  justify-content:center;
+  position:relative;
+  perspective:1000px;
+}
+.carousel-track{
+  display:flex;
+  transition: transform 0.5s ease;
+}
+.testimonial{
+  background:#fff;
+  padding:1.5rem;
+  margin:0 1rem;
+  border-radius:20px;
+  min-width:300px;
+  max-width:400px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+  flex-shrink:0;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+.testimonial:hover{
+  transform: rotateY(10deg) scale(1.05);
+}
+.testimonial p{ font-style:italic; margin-bottom:0.5rem; }
+.testimonial span{ font-weight:600; }
+.carousel-btn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(0,0,0,0.5);
+  border:none;
+  color:#fff;
+  font-size:2rem;
+  padding:0.3rem 0.6rem;
+  cursor:pointer;
+  border-radius:5px;
+  z-index:10;
+}
+.carousel-btn:hover{ background:rgba(0,0,0,0.8); }
+.prev{ left:10px; }
+.next{ right:10px; }
+
+/* Formulario local */
+form{
+  background:rgba(255,255,255,0.95);
+  padding:2rem;
+  border-radius:15px;
+  max-width:500px;
+  width:90%;
+  margin:4rem auto;
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+  opacity:0;
+  transform:translateY(30px);
+  transition: all 1s ease 0.6s;
+}
+form input, form textarea, form button{
+  width:100%;
+  padding:0.8rem;
+  margin-bottom:1rem;
+  border-radius:8px;
+  border:1px solid #ccc;
+  font-size:1rem;
+}
+form button{
+  background:#ff5a5f;
+  color:#fff;
+  border:none;
+  cursor:pointer;
+  font-weight:700;
+  transition: all 0.3s ease;
+}
+form button:hover{ transform:scale(1.05); background:#e04e50; }
+.confirmation{
+  display:none;
+  text-align:center;
+  color:#28a745;
+  font-weight:700;
+  margin-top:1rem;
+}
+
+/* Footer */
+footer{
+  text-align:center;
+  padding:2rem;
+  font-size:0.9rem;
+  color:#666;
+  background:#fff;
+}
+
+/* Confeti */
+.confetti-piece{
+  position:absolute;
+  width:10px;
+  height:10px;
+  opacity:0.8;
+  z-index:9999;
+  border-radius:3px;
+}
+
+@media(max-width:600px){
+  header h1{ font-size:2rem; }
+  header p{ font-size:1rem; }
+  .testimonial{ min-width:250px; }
+}
 </style>
 </head>
 <body>
 
-<!-- Hero Section -->
-<div class="hero">
-  <video autoplay muted loop>
-    <source src="video.mp4" type="video/mp4">
-  </video>
-  <h1>¡Vive tu próxima aventura con Tremendos Viajeros!</h1>
-</div>
-
-<!-- Testimonials -->
-<div class="testimonials">
-  <div class="carousel-track">
-    <div class="testimonial">"¡Increíble experiencia! Muy recomendable."</div>
-    <div class="testimonial">"Guías profesionales y actividades divertidas."</div>
-    <div class="testimonial">"Volveré sin duda. Lo mejor del fin de semana."</div>
+<header>
+  <div class="header-content">
+    <h1>Tremendos Viajeros</h1>
+    <p>Vive experiencias únicas de turismo activo. ¡Kayak, senderismo y más!</p>
+    <div class="cta-button" onclick="document.getElementById('leadForm').scrollIntoView({behavior:'smooth'})">¡Únete a la próxima aventura!</div>
   </div>
-  <div class="carousel-buttons">
-    <button class="prev">&lt;</button>
-    <button class="next">&gt;</button>
-  </div>
-</div>
+</header>
 
-<!-- Formulario -->
-<div class="form-container">
-  <h2>Reserva tu próxima aventura</h2>
-  <form id="leadForm">
-    <input type="text" name="nombre" placeholder="Nombre" required>
-    <input type="text" name="apellidos" placeholder="Apellidos" required>
-    <input type="tel" name="telefono" placeholder="Teléfono" required>
-    <input type="email" name="email" placeholder="Email" required>
-    <textarea name="masinfo" placeholder="Más info que deberíamos saber..." rows="4"></textarea>
-    <button type="submit">¡Quiero la próxima aventura!</button>
-    <div class="confirmation">¡Gracias! Nos pondremos en contacto pronto.</div>
-  </form>
-</div>
+<section class="testimonios">
+  <h2>Lo que dicen nuestros aventureros</h2>
+  <div class="carousel">
+    <button class="carousel-btn prev">&#10094;</button>
+    <div class="carousel-track">
+      <div class="testimonial"><p>"Una experiencia inolvidable, los guías son increíbles."</p><span>- Ana P.</span></div>
+      <div class="testimonial"><p>"Kayak y senderismo combinados, todo perfecto."</p><span>- Carlos M.</span></div>
+      <div class="testimonial"><p>"Me encantó el alojamiento y la organización."</p><span>- Laura R.</span></div>
+      <div class="testimonial"><p>"Diversión asegurada, muy recomendable."</p><span>- Javier L.</span></div>
+    </div>
+    <button class="carousel-btn next">&#10095;</button>
+  </div>
+</section>
+
+<form id="leadForm">
+  <input type="text" name="nombre" placeholder="Nombre" required>
+  <input type="text" name="apellidos" placeholder="Apellidos" required>
+  <input type="tel" name="telefono" placeholder="Teléfono" required>
+  <input type="email" name="email" placeholder="Email" required>
+  <textarea name="masinfo" placeholder="Más info que deberíamos saber..." rows="4"></textarea>
+  <button type="submit">¡Quiero la próxima aventura!</button>
+  <div class="confirmation">¡Recibido! Nos pondremos en contacto para la próxima actividad.</div>
+</form>
+
+<footer>
+  © 2025 Tremendos Viajeros. Todos los derechos reservados.
+</footer>
 
 <script>
-// Confirmación dinámica sin enviar datos a la hoja
+// Animaciones al scroll
+const faders = document.querySelectorAll('header h1, header p, .cta-button, form, .testimonial');
+const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+const appearOnScroll = new IntersectionObserver((entries, observer)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.style.opacity='1';
+      entry.target.style.transform='translateY(0)';
+      observer.unobserve(entry.target);
+    }
+  });
+}, appearOptions);
+faders.forEach(fader=>appearOnScroll.observe(fader));
+
+// Confeti
+function createConfetti() {
+  const confetti = document.createElement('div');
+  confetti.className = 'confetti-piece';
+  confetti.style.left = Math.random()*window.innerWidth + 'px';
+  confetti.style.backgroundColor = `hsl(${Math.random()*360},100%,50%)`;
+  document.body.appendChild(confetti);
+  let top=0;
+  const fall=setInterval(()=>{
+    top+=Math.random()*5+2;
+    confetti.style.top=top+'px';
+    if(top>window.innerHeight){ confetti.remove(); clearInterval(fall); }
+  },20);
+}
+function burstConfetti(){ for(let i=0;i<100;i++){ createConfetti(); } }
+
+// Formulario local sin envío
 const form = document.getElementById('leadForm');
 const confirmation = document.querySelector('.confirmation');
-
-form.addEventListener('submit', e => {
+form.addEventListener('submit', e=>{
   e.preventDefault();
-  confirmation.style.display = 'block';
+  confirmation.style.display='block';
+  burstConfetti();
   form.reset();
 });
 
-// Carrusel
-const track = document.querySelector('.carousel-track');
-const testimonials = document.querySelectorAll('.testimonial');
-const prevBtn = document.querySelector('.prev');
-const nextBtn = document.querySelector('.next');
-let index = 0;
-
-function updateCarousel() {
-  const width = testimonials[0].offsetWidth + 16;
-  track.style.transform = `translateX(${-index*width}px)`;
-}
-
-nextBtn.addEventListener('click', ()=>{ index=(index+1)%testimonials.length; updateCarousel(); });
-prevBtn.addEventListener('click', ()=>{ index=(index-1+testimonials.length)%testimonials.length; updateCarousel(); });
+// Carrusel automático y manual
+const track=document.querySelector('.carousel-track');
+const prevBtn=document.querySelector('.prev');
+const nextBtn=document.querySelector('.next');
+const testimonials=document.querySelectorAll('.testimonial');
+let index=0;
+function updateCarousel(){ track.style.transform=`translateX(-${index*420}px)`; }
+nextBtn.addEventListener('click',()=>{ index=(index+1)%testimonials.length; updateCarousel(); });
+prevBtn.addEventListener('click',()=>{ index=(index-1+testimonials.length)%testimonials.length; updateCarousel(); });
 setInterval(()=>{ index=(index+1)%testimonials.length; updateCarousel(); },5000);
 </script>
-
 </body>
 </html>
