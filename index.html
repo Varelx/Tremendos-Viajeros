@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Experiencias Multiaventura</title>
+<style>
+  /* Reset básico */
+  * {margin:0; padding:0; box-sizing:border-box; font-family: 'Arial', sans-serif;}
+  body {background:#f0f8ff; color:#333;}
+
+  /* Secciones */
+  section {padding:60px 20px; text-align:center;}
+  h1, h2 {margin-bottom:20px; color:#1a1a1a;}
+  p {margin-bottom:20px; line-height:1.6;}
+
+  /* Hero */
+  #hero {background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1950&q=80') center/cover no-repeat; color:white; height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-shadow: 1px 1px 4px rgba(0,0,0,0.6);}
+  #hero button {padding:15px 30px; background:#ff5722; color:white; border:none; border-radius:8px; font-size:1.2em; cursor:pointer; transition:0.3s;}
+  #hero button:hover {background:#e64a19;}
+
+  /* Galería */
+  #galeria {display:flex; flex-wrap:wrap; justify-content:center; gap:20px;}
+  #galeria img {width:300px; height:200px; object-fit:cover; border-radius:10px; transition: transform 0.3s;}
+  #galeria img:hover {transform: scale(1.05);}
+
+  /* Testimonios */
+  #testimonios {background:#e0f7fa; padding:60px 20px;}
+  .testimonial {margin:20px; padding:20px; background:white; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.1);}
+
+  /* Formulario */
+  #formulario {background:#fff3e0; padding:60px 20px; border-radius:10px;}
+  #formulario form {max-width:500px; margin:0 auto; display:flex; flex-direction:column; gap:15px;}
+  #formulario input, #formulario textarea {padding:12px; border-radius:6px; border:1px solid #ccc; font-size:1em;}
+  #formulario button {padding:15px; border:none; background:#ff5722; color:white; font-size:1.1em; border-radius:8px; cursor:pointer; transition:0.3s;}
+  #formulario button:hover {background:#e64a19;}
+  #confirmacion {color:green; margin-top:15px; display:none;}
+
+  /* Redes sociales */
+  #redes {margin-top:40px;}
+  #redes a {margin:0 10px; text-decoration:none; color:#ff5722; font-weight:bold;}
+
+  /* Animaciones */
+  .fade-in {opacity:0; transform:translateY(30px); transition: all 1s ease-in-out;}
+  .fade-in.visible {opacity:1; transform:translateY(0);}
+  
+  /* Responsive */
+  @media(max-width:768px){
+    #galeria img {width:90%; height:auto;}
+  }
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<section id="hero">
+  <h1>Vive la Aventura al Máximo</h1>
+  <p>Únete a nuestras experiencias multiaventura y descubre la naturaleza como nunca antes.</p>
+  <button onclick="document.getElementById('formulario').scrollIntoView({behavior:'smooth'})">¡Quiero la próxima aventura!</button>
+</section>
+
+<!-- Galería -->
+<section id="galeria">
+  <h2>Galería de Experiencias</h2>
+  <div>
+    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" class="fade-in">
+    <img src="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?auto=format&fit=crop&w=800&q=80" class="fade-in">
+    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80" class="fade-in">
+  </div>
+</section>
+
+<!-- Testimonios -->
+<section id="testimonios">
+  <h2>Lo que dicen nuestros aventureros</h2>
+  <div class="testimonial fade-in">"Una experiencia inolvidable, los guías son increíbles!" - Marta R.</div>
+  <div class="testimonial fade-in">"El pack completo merece cada euro, volveré sin duda!" - Javier L.</div>
+  <div class="testimonial fade-in">"Kayak, senderismo y orientación todo en un fin de semana, ¡súper recomendado!" - Laura P.</div>
+</section>
+
+<!-- Formulario -->
+<section id="formulario">
+  <h2>Apúntate a la próxima aventura</h2>
+  <form id="leadForm">
+    <input type="text" name="nombre" placeholder="Nombre" required>
+    <input type="text" name="apellidos" placeholder="Apellidos" required>
+    <input type="tel" name="telefono" placeholder="Teléfono" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <textarea name="masinfo" placeholder="Más info que quieras contarnos..." rows="4"></textarea>
+    <button type="submit">¡Quiero la próxima aventura!</button>
+    <div id="confirmacion">Gracias, nos pondremos en contacto para la próxima actividad.</div>
+  </form>
+
+  <!-- Redes sociales -->
+  <div id="redes">
+    <a href="#" target="_blank">Instagram</a>
+    <a href="#" target="_blank">TikTok</a>
+    <a href="#" target="_blank">YouTube</a>
+  </div>
+</section>
+
+<script>
+  // Animaciones scroll
+  const faders = document.querySelectorAll('.fade-in');
+  const appearOptions = { threshold: 0.2 };
+  const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll){
+    entries.forEach(entry => {
+      if(!entry.isIntersecting) return;
+      entry.target.classList.add('visible');
+      appearOnScroll.unobserve(entry.target);
+    });
+  }, appearOptions);
+
+  faders.forEach(fader => appearOnScroll.observe(fader));
+
+  // Formulario
+  const form = document.getElementById('leadForm');
+  const confirmMsg = document.getElementById('confirmacion');
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    // Aquí puedes añadir integración con tu servidor o servicio de email
+    confirmMsg.style.display = 'block';
+    form.reset();
+  });
+</script>
+
+</body>
+</html>
