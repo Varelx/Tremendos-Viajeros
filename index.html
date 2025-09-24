@@ -4,123 +4,148 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tremendos Viajeros - Turismo Activo en Galicia</title>
-<meta name="description" content="Vive experiencias únicas de turismo activo en Galicia. Kayak, senderismo, orientación y aventuras sin preocuparte de nada.">
-<meta name="keywords" content="turismo activo, Galicia, kayak, senderismo, orientación, aventuras fin de semana, multiactividad, Tremendos Viajeros">
-<meta name="robots" content="index, follow">
 
-<!-- Open Graph / Social Media -->
-<meta property="og:title" content="Tremendos Viajeros - Turismo Activo en Galicia">
-<meta property="og:description" content="Vive experiencias únicas de turismo activo en Galicia. Kayak, senderismo, orientación y aventuras sin preocuparte de nada.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://tremendosviajeros.com/">
-<meta property="og:image" content="https://tremendosviajeros.es/foto3.jpg">
-
-
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<!-- Fuente -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
-/* RESET y BODY */
-body, html { margin:0; padding:0; font-family:'Inter',sans-serif; background:#f5f5f7; scroll-behavior:smooth; }
-h1,h2,h3,p,li{margin:0; padding:0;}
-a{text-decoration:none; color:inherit;}
-ul{list-style:none; padding:0;}
-img, video{max-width:100%; display:block; border-radius:12px;}
+/* RESET */
+body, html {
+  margin:0; padding:0; font-family:'Poppins', sans-serif;
+  background:#FAF3E0; scroll-behavior:smooth; color:#2F2F2F;
+}
+h1,h2,h3,p,li { margin:0; padding:0; }
+a { text-decoration:none; color:inherit; }
+ul { list-style:none; padding:0; }
+img { max-width:100%; display:block; border-radius:12px; }
 
-/* HEADER HERO */
-header{
+/* COLORES */
+:root {
+  --primary:#FF6B35;     /* naranja CTA */
+  --secondary:#FFB347;   /* amarillo cálido */
+  --nature:#2F5233;      /* verde bosque */
+  --light:#FAF3E0;       /* beige fondo */
+  --dark:#2F2F2F;
+}
+
+/* HEADER */
+header {
   position:relative; height:100vh; display:flex; flex-direction:column;
   justify-content:center; align-items:center; text-align:center; color:#fff;
-  background: url('imagen.jpg') center center / cover no-repeat;
+  background:url('imagen.jpg') center/cover no-repeat;
 }
-header::before{
+header::before {
   content:""; position:absolute; top:0; left:0; width:100%; height:100%;
-  background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.6)); z-index:0;
+  background:linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.6));
+  z-index:0;
 }
-.header-content{position:relative; z-index:1; max-width:90%;}
-header h1{ font-size:3rem; font-weight:700; margin-bottom:1rem; opacity:0; transform:translateY(30px); transition: all 1s ease;}
-header p{ font-size:1.2rem; margin-bottom:2rem; opacity:0; transform:translateY(30px); transition: all 1s ease 0.3s;}
-.cta-button{display:inline-block; padding:1rem 2rem; background:#ff5a5f; color:#fff; font-weight:700; border-radius:50px; cursor:pointer; font-size:1rem; transition: all 0.3s ease; opacity:0; transform:translateY(30px);}
-.cta-button:hover{ transform: scale(1.1) translateY(-2px); background:#e04e50; }
+.header-content { position:relative; z-index:1; max-width:90%; }
+header h1 { font-size:3rem; font-weight:700; margin-bottom:1rem; }
+header p { font-size:1.2rem; margin-bottom:2rem; }
+
+/* BOTONES */
+.cta-button {
+  display:inline-block; padding:1rem 2rem; background:var(--primary);
+  color:#fff; font-weight:700; border-radius:50px; cursor:pointer;
+  font-size:1rem; transition:all 0.3s ease;
+}
+.cta-button:hover {
+  transform:scale(1.1) translateY(-2px);
+  background:var(--secondary); box-shadow:0 0 20px var(--secondary);
+}
 
 /* SECCIONES */
-section{padding:4rem 2rem; text-align:center;}
-section h2{font-size:2rem; margin-bottom:2rem; color:#333;}
+section { padding:4rem 2rem; text-align:center; }
+section h2 { font-size:2rem; margin-bottom:2rem; color:var(--nature); }
 
 /* ACTIVIDADES */
-.activities-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:2rem; max-width:1200px; margin:0 auto;}
-.activity{ background:#fff; padding:1.5rem; border-radius:15px; box-shadow:0 10px 25px rgba(0,0,0,0.1); transition: transform 0.3s ease; opacity:0; transform:translateY(30px);}
-.activity:hover{ transform: scale(1.03); }
-.activity h3{margin-bottom:0.5rem; color:#ff5a5f;}
-.activity p{color:#555;}
+.activities-grid {
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:2rem; max-width:1200px; margin:0 auto;
+}
+.activity {
+  background:#fff; padding:1.5rem; border-radius:15px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+  transition:transform 0.3s ease, box-shadow 0.3s ease;
+}
+.activity:hover {
+  transform:scale(1.05);
+  box-shadow:0 15px 30px rgba(255,107,53,0.3);
+}
+.activity h3 { margin-bottom:0.5rem; color:var(--primary); }
+.activity p { color:#555; }
 
 /* TESTIMONIOS */
-.testimonios-grid{ display:flex; flex-wrap:wrap; justify-content:center; gap:2rem;}
-.testimonial{ background:#fff; padding:1.5rem; border-radius:20px; min-width:300px; max-width:400px; box-shadow:0 10px 25px rgba(0,0,0,0.1); flex-shrink:0; transition: transform 0.5s ease, opacity 0.5s ease; opacity:0; transform:translateY(30px);}
-.testimonial:hover{ transform: scale(1.05); }
-.testimonial span{ display:block; margin-top:0.5rem; color:#ff5a5f; font-weight:600;}
-.testimonios .cta-button { margin-top: 2rem; /* Ajusta la distancia a tu gusto */
+.testimonios-grid {
+  display:flex; flex-wrap:wrap; justify-content:center; gap:2rem;
 }
-
+.testimonial {
+  background:#fff; padding:1.5rem; border-radius:20px;
+  min-width:300px; max-width:400px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+  transition:transform 0.3s ease;
+}
+.testimonial:hover { transform:scale(1.05); }
+.testimonial span { display:block; margin-top:0.5rem; color:var(--primary); font-weight:600; }
 
 /* GALERÍA */
-.gallery{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem; max-width:1200px; margin:0 auto;}
+.gallery {
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:1rem; max-width:1200px; margin:0 auto;
+}
 
 /* FAQ */
-.faq-item{background:#fff; padding:1rem 1.5rem; border-radius:12px; margin-bottom:1rem; text-align:left; cursor:pointer; transition: all 0.3s ease;}
-.faq-item:hover{background:#f0f0f5;}
-.faq-item h4{margin-bottom:0.5rem; color:#ff5a5f;}
-.faq-item p{display:none; color:#555;}
+.faq-item {
+  background:#fff; padding:1rem 1.5rem; border-radius:12px;
+  margin-bottom:1rem; text-align:left; cursor:pointer;
+  transition:all 0.3s ease;
+}
+.faq-item:hover { background:#FFF5EC; }
+.faq-item h4 { margin-bottom:0.5rem; color:var(--primary); }
+.faq-item p { display:none; color:#555; }
 
 /* FORMULARIO */
-form{ background:rgba(255,255,255,0.95); padding:2rem; border-radius:15px; max-width:500px; width:90%; margin:2rem auto; box-shadow:0 10px 25px rgba(0,0,0,0.1); opacity:0; transform:translateY(30px); transition: all 1s ease 0.6s;}
-form input, form textarea, form button{ width:100%; padding:0.8rem; margin-bottom:1rem; border-radius:8px; border:1px solid #ccc; font-size:1rem;}
-form button{ background:#ff5a5f; color:#fff; border:none; cursor:pointer; font-weight:700; transition: all 0.3s ease;}
-form button:hover{ transform:scale(1.05); background:#e04e50; }
-.confirmation{display:none; text-align:center; color:#28a745; font-weight:700; margin-top:1rem;}
+form {
+  background:#fff; padding:2rem; border-radius:15px;
+  max-width:500px; width:90%; margin:2rem auto;
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+form input, form textarea, form button {
+  width:100%; padding:0.8rem; margin-bottom:1rem;
+  border-radius:8px; border:1px solid #ccc; font-size:1rem;
+}
+form button {
+  background:var(--primary); color:#fff; border:none; cursor:pointer;
+  font-weight:700; transition:all 0.3s ease;
+}
+form button:hover {
+  transform:scale(1.05);
+  background:var(--secondary);
+}
+.confirmation { display:none; text-align:center; color:green; font-weight:700; margin-top:1rem; }
+
+/* INSTAGRAM BLOCK */
+.instagram-block {
+  background:linear-gradient(135deg, var(--primary), var(--secondary));
+  color:#fff; padding:3rem 2rem; text-align:center;
+}
+.instagram-block h2 { font-size:2rem; margin-bottom:1rem; }
+.instagram-block p { margin-bottom:2rem; }
+.instagram-block a {
+  background:#fff; color:var(--primary); padding:1rem 2rem;
+  border-radius:50px; font-weight:700; transition:all 0.3s ease;
+}
+.instagram-block a:hover {
+  background:var(--dark); color:#fff;
+}
 
 /* FOOTER */
-footer{ text-align:center; padding:2rem; font-size:0.9rem; color:#666; background:#fff; }
-
-/* RESPONSIVE */
-@media(max-width:600px){ header h1{ font-size:2rem; } header p{ font-size:1rem; } .testimonial{ min-width:250px; } }
-</style>
-
-<!-- JSON-LD para SEO avanzado -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "TouristAttraction",
-  "name": "Tremendos Viajeros",
-  "description": "Vive experiencias únicas de turismo activo en Galicia. Kayak, senderismo, orientación y aventuras sin preocuparte de nada",
-  "image": [
-    "https://tremendosviajeros.es/foto1.jpg",
-    "https://tremendosviajeros.es/foto2.jpg",
-    "https://tremendosviajeros.es/foto3.jpg",
-  "telephone": "+34 605 260 005",
-  "review": [
-    {
-      "@type": "Review",
-      "author": "Ana V.",
-      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-      "reviewBody": "Una experiencia inolvidable, los guías son increíbles."
-    },
-    {
-      "@type": "Review",
-      "author": "Iban P.",
-      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-      "reviewBody": "Me habéis enganchado a la orientación."
-    },
-    {
-      "@type": "Review",
-      "author": "Carlos M.",
-      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-      "reviewBody": "Kayak y senderismo combinados, todo perfecto."
-    }
-  ]
+footer {
+  text-align:center; padding:2rem; font-size:0.9rem;
+  color:#666; background:#fff;
 }
-</script>
-
+footer a { color:var(--primary); }
+</style>
 </head>
 <body>
 
@@ -128,7 +153,7 @@ footer{ text-align:center; padding:2rem; font-size:0.9rem; color:#666; backgroun
   <div class="header-content">
     <h1>Tremendos Viajeros</h1>
     <p>Vive experiencias únicas de turismo activo en Galicia. ¡Kayak, senderismo y más!</p>
-    <div class="cta-button" onclick="document.getElementById('leadForm').scrollIntoView({behavior:'smooth'})">¡Únete a la próxima aventura!</div>
+    <div class="cta-button">¡Únete a la próxima aventura!</div>
   </div>
 </header>
 
@@ -137,19 +162,19 @@ footer{ text-align:center; padding:2rem; font-size:0.9rem; color:#666; backgroun
   <div class="activities-grid">
     <div class="activity">
       <h3>Kayak</h3>
-      <p>Disfruta de rutas guiadas en kayak por ríos y embalses de Galicia, adaptadas a todos los niveles.</p>
+      <p>Rutas guiadas en kayak por ríos y embalses de Galicia, para todos los niveles.</p>
     </div>
     <div class="activity">
       <h3>Senderismo</h3>
-      <p>Recorre paisajes espectaculares con rutas de senderismo de medio día o fin de semana completo.</p>
+      <p>Paisajes espectaculares con rutas de medio día o fin de semana completo.</p>
     </div>
     <div class="activity">
       <h3>Orientación</h3>
-      <p>Aprende a orientarte con mapas y brújula mientras exploras la naturaleza gallega.</p>
+      <p>Aprende a orientarte con mapas y brújula en plena naturaleza.</p>
     </div>
     <div class="activity">
       <h3>Multiactividad</h3>
-      <p>Combina varias actividades en un mismo pack: kayak, senderismo y aventura para todos.</p>
+      <p>Combina kayak, senderismo y aventura en un mismo pack.</p>
     </div>
   </div>
 </section>
@@ -157,26 +182,25 @@ footer{ text-align:center; padding:2rem; font-size:0.9rem; color:#666; backgroun
 <section id="galeria">
   <h2>Galería de Experiencias</h2>
   <div class="gallery">
-    <img src="foto1.jpg" alt="Treking Camiño dos Faros" loading="lazy">
-    <img src="foto2.jpg" alt="Senderismo en Galicia" loading="lazy">
-    <img src="foto3.jpg" alt="Montañismo en la naturaleza" loading="lazy">
+    <img src="foto1.jpg" alt="Trekking">
+    <img src="foto2.jpg" alt="Senderismo en Galicia">
+    <img src="foto3.jpg" alt="Montañismo">
   </div>
 </section>
 
 <section class="testimonios">
   <h2>Lo que dicen nuestros aventureros</h2>
   <div class="testimonios-grid">
-    <div class="testimonial"><p>"Una experiencia inolvidable, los guías son increíbles."</p><span>Ana V.</span></div>
+    <div class="testimonial"><p>"Una experiencia inolvidable."</p><span>Ana V.</span></div>
     <div class="testimonial"><p>"Me habéis enganchado a la orientación."</p><span>Iban P.</span></div>
     <div class="testimonial"><p>"Kayak y senderismo combinados, todo perfecto."</p><span>Carlos M.</span></div>
   </div>
-  <div class="cta-button" onclick="document.getElementById('leadForm').scrollIntoView({behavior:'smooth'})">¡Quiero la próxima aventura!</div>
 </section>
 
 <section id="faq">
   <h2>Preguntas Frecuentes</h2>
-  <div class="faq-item"><h4>¿Qué incluye el pack de aventura?</h4><p>Principalmente actividades guiadas, seguro de actividad y materiales. Dependiendo de cada actividad, pueden disponer a mayores de diferentes servicios enriquecedores.</p></div>
-  <div class="faq-item"><h4>¿Necesito experiencia previa?</h4><p>No, las actividades están adaptadas a todos los niveles y edades.</p></div>
+  <div class="faq-item"><h4>¿Qué incluye el pack?</h4><p>Actividades guiadas, seguro y materiales.</p></div>
+  <div class="faq-item"><h4>¿Necesito experiencia previa?</h4><p>No, están adaptadas a todos los niveles.</p></div>
 </section>
 
 <form id="leadForm">
@@ -185,12 +209,19 @@ footer{ text-align:center; padding:2rem; font-size:0.9rem; color:#666; backgroun
   <input type="tel" name="telefono" placeholder="Teléfono" required>
   <textarea name="mensaje" placeholder="Más info (opcional)" rows="3"></textarea>
   <button type="submit">¡Quiero la próxima aventura!</button>
-  <div class="confirmation">¡Recibido! Nos pondremos en contacto para la próxima actividad.</div>
+  <div class="confirmation">¡Recibido! Nos pondremos en contacto.</div>
 </form>
+
+<!-- Bloque Instagram -->
+<div class="instagram-block">
+  <h2>¿Quieres ver más aventuras en acción?</h2>
+  <p>Síguenos en Instagram y vive la experiencia Tremendos Viajeros.</p>
+  <a href="https://instagram.com/tremendosviajeros" target="_blank">📸 Ir a Instagram</a>
+</div>
 
 <footer>
   © 2025 Tremendos Viajeros. Todos los derechos reservados.  
-  <br>Contacto: info@tremendosviajeros.com
+  <br>Contacto: info@tremendosviajeros.com  
   <br><br>
   <a href="aviso-legal.html">Aviso Legal</a> | 
   <a href="condiciones-generales.html">Condiciones Generales</a> | 
@@ -198,34 +229,5 @@ footer{ text-align:center; padding:2rem; font-size:0.9rem; color:#666; backgroun
   <a href="politica-cookies.html">Política de Cookies</a> | 
   <a href="envios-devoluciones.html">Envíos y Devoluciones</a>
 </footer>
-
-<script>
-// Animaciones al scroll
-const faders = document.querySelectorAll('header h1, header p, .cta-button, form, .testimonial, .activity');
-const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
-const appearOnScroll = new IntersectionObserver((entries, observer)=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){ entry.target.style.opacity='1'; entry.target.style.transform='translateY(0)'; observer.unobserve(entry.target); }
-  });
-}, appearOptions);
-faders.forEach(fader=>appearOnScroll.observe(fader));
-
-// FAQ toggle
-document.querySelectorAll('.faq-item').forEach(item=>{
-  item.addEventListener('click', ()=>{
-    const p = item.querySelector('p');
-    p.style.display = (p.style.display==='block') ? 'none' : 'block';
-  });
-});
-
-// Formulario simple
-const form = document.getElementById('leadForm');
-const confirmation = document.querySelector('.confirmation');
-form.addEventListener('submit', e=>{
-  e.preventDefault();
-  confirmation.style.display='block';
-  form.reset();
-});
-</script>
 </body>
 </html>
