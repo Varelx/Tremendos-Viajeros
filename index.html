@@ -152,7 +152,7 @@ footer a { color:var(--primary); }
 <header>
   <div class="header-content">
     <h1>Tremendos Viajeros</h1>
-    <p>Vive experiencias únicas de turismo activo en Galicia. ¡Kayak, senderismo y más!</p>
+    <p>Vive experiencias únicas de turismo activo en Galicia.</p>
     <div class="cta-button">¡Únete a la próxima aventura!</div>
   </div>
 </header>
@@ -161,23 +161,66 @@ footer a { color:var(--primary); }
   <h2>Nuestras Actividades</h2>
   <div class="activities-grid">
     <div class="activity">
+      <i class="fa-solid fa-water"></i> <!-- Icono kayak -->
       <h3>Kayak</h3>
-      <p>Rutas guiadas en kayak por ríos y embalses de Galicia, para todos los niveles.</p>
+      <p>Rutas guiadas en kayak por ríos y embalses de Galicia. Perfecto para todos los niveles y amantes del agua.</p>
     </div>
     <div class="activity">
+      <i class="fa-solid fa-mountain"></i> <!-- Icono senderismo -->
       <h3>Senderismo</h3>
-      <p>Paisajes espectaculares con rutas de medio día o fin de semana completo.</p>
+      <p>Explora paisajes espectaculares con rutas de medio día o fin de semana completo. Conecta con la naturaleza a tu ritmo.</p>
     </div>
     <div class="activity">
+      <i class="fa-solid fa-bicycle"></i> <!-- Icono BTT -->
+      <h3>BTT</h3>
+      <p>Recorre senderos y montañas en bicicleta de montaña. Aventuras para todos los niveles y adrenalina garantizada.</p>
+    </div>
+    <div class="activity">
+      <i class="fa-solid fa-bolt"></i> <!-- Icono EBike -->
+      <h3>EBike</h3>
+      <p>Disfruta del ciclismo con asistencia eléctrica, descubriendo rincones únicos sin esfuerzo extremo, ideal para todos.</p>
+    </div>
+    <div class="activity">
+      <i class="fa-solid fa-compass"></i> <!-- Icono orientación -->
       <h3>Orientación</h3>
-      <p>Aprende a orientarte con mapas y brújula en plena naturaleza.</p>
+      <p>Aprende a moverte con mapas y brújula en plena naturaleza. Desafía tu mente y tu espíritu aventurero.</p>
     </div>
     <div class="activity">
+      <i class="fa-solid fa-layer-group"></i> <!-- Icono multiactividad -->
       <h3>Multiactividad</h3>
-      <p>Combina kayak, senderismo y aventura en un mismo pack.</p>
+      <p>Combina kayak, senderismo y BTT/EBike en un pack completo. Una experiencia de aventura total en Galicia.</p>
     </div>
   </div>
 </section>
+
+<!-- Estilo CSS rápido para centrar iconos y hacer el grid más visual -->
+<style>
+.activities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+.activity {
+  background: #f5f5f5;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.2s;
+}
+.activity:hover {
+  transform: translateY(-5px);
+}
+.activity i {
+  font-size: 40px;
+  color: #2c7a7b;
+  margin-bottom: 10px;
+}
+.activity h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+</style>
 
 <section id="galeria">
   <h2>Galería de Experiencias</h2>
@@ -207,6 +250,7 @@ footer a { color:var(--primary); }
   <input type="text" name="nombre" placeholder="Nombre" required>
   <input type="email" name="email" placeholder="Email" required>
   <input type="tel" name="telefono" placeholder="Teléfono" required>
+  <textarea name="mensaje" placeholder="Cómo nos conociste (opcional)" rows="3"></textarea>
   <textarea name="mensaje" placeholder="Más info (opcional)" rows="3"></textarea>
   <button type="submit">¡Quiero la próxima aventura!</button>
   <div class="confirmation">¡Recibido! Nos pondremos en contacto.</div>
