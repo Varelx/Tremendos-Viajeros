@@ -4,20 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tremendos Viajeros - Turismo Activo en Galicia</title>
-<meta name="description" content="Vive experiencias únicas de turismo activo en Galicia: senderismo, kayak, BTT, EBike, orientación y multiactividades.">
 
-<!-- Favicon -->
-<link rel="apple-touch-icon" sizes="180x180" href="favicon/favicon-apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
-<link rel="manifest" href="site.webmanifest">
-<link rel="icon" href="favicon/favicon-192x192.png">
+<!-- Favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192x192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="favicon-512x512.png">
+<link rel="apple-touch-icon" href="favicon-apple-touch-icon.png">
 
 <!-- Fuente -->
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
-<!-- FontAwesome -->
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pap6Wj..." crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <!-- CSS -->
 <link rel="stylesheet" href="style.css">
@@ -26,77 +25,39 @@
 <body>
 
 <!-- PRELOADER -->
-<div id="preloader">
-  <img src="favicon/favicon-192x192.png" alt="Tremendos Viajeros">
+<div id="preloader" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#fff;z-index:9999;display:flex;justify-content:center;align-items:center;">
+  <div style="font-size:2rem;color:#2E8B57;">Cargando...</div>
 </div>
 
-<!-- HEADER / PORTADA -->
-<header id="inicio">
+<header>
   <div class="header-content">
     <h1>Tremendos Viajeros</h1>
     <p>Vive experiencias únicas de turismo activo en Galicia.</p>
-    <div class="cta-button" id="ctaForm">¡Únete a la próxima aventura!</div>
+    <div class="cta-button">¡Únete a la próxima aventura!</div>
   </div>
 </header>
 
-<!-- QUIÉNES SOMOS -->
-<section id="quienes">
-  <h2>Quiénes Somos</h2>
-  <p>Somos un equipo de guías apasionados por la naturaleza y la aventura. Nuestro objetivo es ofrecer experiencias auténticas y seguras en Galicia, combinando deporte, aprendizaje y diversión.</p>
-  <div class="team-grid">
-    <div class="team-member">
-      <img src="foto1.jpg" alt="Equipo Tremendos Viajeros">
-      <span>Ana V. - Guía</span>
-    </div>
-    <div class="team-member">
-      <img src="foto2.jpg" alt="Equipo Tremendos Viajeros">
-      <span>Iban P. - Guía</span>
-    </div>
-    <div class="team-member">
-      <img src="foto3.jpg" alt="Equipo Tremendos Viajeros">
-      <span>Carlos M. - Guía</span>
-    </div>
-  </div>
-</section>
-
-<!-- ACTIVIDADES -->
 <section id="actividades">
   <h2>Nuestras Actividades</h2>
   <div class="activities-grid">
-    <div class="activity" onclick="location.href='experiencia-kayak.html'">
+    <div class="activity">
       <i class="fas fa-water"></i>
       <h3>Kayak</h3>
-      <p>Rutas guiadas en kayak por ríos y embalses de Galicia. Perfecto para todos los niveles.</p>
+      <p>Rutas guiadas en kayak por ríos y embalses de Galicia. Perfecto para todos los niveles y amantes del agua.</p>
     </div>
-    <div class="activity" onclick="location.href='experiencia-senderismo.html'">
+    <div class="activity">
       <i class="fas fa-mountain"></i>
       <h3>Senderismo</h3>
-      <p>Explora paisajes espectaculares con rutas de medio día o fin de semana completo.</p>
+      <p>Explora paisajes espectaculares con rutas de medio día o fin de semana completo. Conecta con la naturaleza a tu ritmo.</p>
     </div>
-    <div class="activity" onclick="location.href='experiencia-btt.html'">
+    <div class="activity">
       <i class="fas fa-bicycle"></i>
       <h3>BTT</h3>
-      <p>Recorre senderos y montañas en bicicleta de montaña con adrenalina garantizada.</p>
-    </div>
-    <div class="activity" onclick="location.href='experiencia-ebike.html'">
-      <i class="fas fa-bolt"></i>
-      <h3>EBike</h3>
-      <p>Disfruta del ciclismo con asistencia eléctrica, descubriendo rincones únicos sin esfuerzo extremo.</p>
-    </div>
-    <div class="activity" onclick="location.href='experiencia-orientacion.html'">
-      <i class="fas fa-compass"></i>
-      <h3>Orientación</h3>
-      <p>Aprende a moverte con mapas y brújula en plena naturaleza. Desafía tu mente y espíritu aventurero.</p>
-    </div>
-    <div class="activity" onclick="location.href='experiencia-multiactividad.html'">
-      <i class="fas fa-layer-group"></i>
-      <h3>Multiactividad</h3>
-      <p>Combina kayak, senderismo y BTT/EBike en un pack completo. Una experiencia total en Galicia.</p>
+      <p>Recorre senderos y montañas en bicicleta de montaña. Aventuras para todos los niveles y adrenalina garantizada.</p>
     </div>
   </div>
 </section>
 
-<!-- GALERÍA -->
 <section id="galeria">
   <h2>Galería de Experiencias</h2>
   <div class="gallery">
@@ -106,67 +67,53 @@
   </div>
 </section>
 
-<!-- TESTIMONIOS -->
-<section id="testimonios">
+<section class="testimonios">
   <h2>Lo que dicen nuestros aventureros</h2>
   <div class="testimonios-grid">
-    <div class="testimonial">
-      <p>"Una experiencia inolvidable."</p>
-      <span>Ana V.</span>
-    </div>
-    <div class="testimonial">
-      <p>"Me habéis enganchado a la orientación."</p>
-      <span>Iban P.</span>
-    </div>
-    <div class="testimonial">
-      <p>"Kayak y senderismo combinados, todo perfecto."</p>
-      <span>Carlos M.</span>
-    </div>
+    <div class="testimonial"><p>"Una experiencia inolvidable."</p><span>Ana V.</span></div>
+    <div class="testimonial"><p>"Me habéis enganchado a la orientación."</p><span>Iban P.</span></div>
+    <div class="testimonial"><p>"Kayak y senderismo combinados, todo perfecto."</p><span>Carlos M.</span></div>
   </div>
 </section>
 
-<!-- FAQ -->
 <section id="faq">
   <h2>Preguntas Frecuentes</h2>
   <div class="faq-item"><h4>¿Qué incluye el pack?</h4><p>Actividades guiadas, seguro y materiales.</p></div>
   <div class="faq-item"><h4>¿Necesito experiencia previa?</h4><p>No, están adaptadas a todos los niveles.</p></div>
 </section>
 
-<!-- FORMULARIO / CONTACTO -->
-<section id="contacto">
-  <h2>Contacto / Reserva</h2>
-  <form id="leadForm">
-    <input type="text" name="nombre" placeholder="Nombre" required>
-    <input type="email" name="email" placeholder="Email" required>
-    <input type="tel" name="telefono" placeholder="Teléfono" required>
-    <textarea name="mensaje" placeholder="Cómo nos conociste (opcional)" rows="3"></textarea>
-    <textarea name="info" placeholder="Más info (opcional)" rows="3"></textarea>
-    <button type="submit">¡Quiero la próxima aventura!</button>
-    <div class="confirmation">¡Recibido! Nos pondremos en contacto.</div>
-  </form>
-</section>
+<form id="leadForm">
+  <input type="text" name="nombre" placeholder="Nombre" required>
+  <input type="email" name="email" placeholder="Email" required>
+  <input type="tel" name="telefono" placeholder="Teléfono" required>
+  <textarea name="mensaje" placeholder="Cómo nos conociste (opcional)" rows="3"></textarea>
+  <textarea name="mensaje2" placeholder="Más info (opcional)" rows="3"></textarea>
+  <button type="submit">¡Quiero la próxima aventura!</button>
+  <div class="confirmation">¡Recibido! Nos pondremos en contacto.</div>
+</form>
 
-<!-- GOOGLE MAPS RESEÑAS -->
+<!-- Google Maps Reseñas -->
 <section id="reseñas">
-  <h2>Reseñas de Clientes</h2>
-  <iframe src="https://www.google.com/maps/embed?pb=TU_EMBED_DE_GOOGLE_MAPS"
-    width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+  <h2>Reseñas en Google</h2>
+  <iframe src="TU_URL_DE_GOOGLE_MAPS" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 </section>
 
-<!-- BOTONES FLOTANTES -->
-<div class="floating-buttons">
-  <a href="https://wa.me/tu_numero" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
-  <a href="https://instagram.com/tremendosviajeros" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
+<!-- Bloque Instagram -->
+<div class="instagram-block">
+  <h2>¿Quieres ver más aventuras en acción?</h2>
+  <p>Síguenos en Instagram y vive la experiencia Tremendos Viajeros.</p>
+  <a href="https://instagram.com/tremendosviajeros" target="_blank">📸 Ir a Instagram</a>
 </div>
 
-<!-- FOOTER -->
 <footer>
-  © 2025 Tremendos Viajeros. Todos los derechos reservados.<br>
-  Contacto: info@tremendosviajeros.com<br><br>
+  © 2025 Tremendos Viajeros. Todos los derechos reservados.  
+  <br>Contacto: info@tremendosviajeros.com  
+  <br><br>
   <a href="aviso-legal.html">Aviso Legal</a> | 
   <a href="condiciones-generales.html">Condiciones Generales</a> | 
   <a href="politica-privacidad.html">Política de Privacidad</a> | 
-  <a href="politica-cookies.html">Política de Cookies</a>
+  <a href="politica-cookies.html">Política de Cookies</a> | 
+  <a href="envios-devoluciones.html">Envíos y Devoluciones</a>
 </footer>
 
 <!-- JS -->
