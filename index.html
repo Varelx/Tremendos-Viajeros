@@ -1,331 +1,567 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tremendos Viajeros - Turismo Activo en Galicia</title>
-  
-<link rel="icon" type="image/x-icon" href="favicon.ico"> 
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="192x192" href="favicon-192x192.png">
-<link rel="icon" type="image/png" sizes="512x512" href="favicon-512x512.png">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Tremendos Viajeros — Turismo Activo en Galicia</title>
 
-<!-- Fuente -->
+<!-- Favicon (añade favicon.png en la raíz o cambia la ruta) -->
+<link rel="icon" type="image/png" href="favicon.png">
+
+<!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- Font Awesome icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="" crossorigin="anonymous">
 
 <style>
-/* RESET */
-body, html {
-  margin:0; padding:0; font-family:'Poppins', sans-serif;
-  background:#FAF3E0; scroll-behavior:smooth; color:#2F2F2F;
-}
-h1,h2,h3,p,li { margin:0; padding:0; }
-a { text-decoration:none; color:inherit; }
-ul { list-style:none; padding:0; }
-img { max-width:100%; display:block; border-radius:12px; }
+/* ---------------- RESET ---------------- */
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;font-family:'Poppins',sans-serif;background:#FAF3E0;color:#2F2F2F;scroll-behavior:smooth}
+img{max-width:100%;display:block}
 
-/* COLORES */
-:root {
-  --primary:#FF6B35;     /* naranja CTA */
-  --secondary:#FFB347;   /* amarillo cálido */
-  --nature:#2F5233;      /* verde bosque */
-  --light:#FAF3E0;       /* beige fondo */
+/* -------------- THEME / BRAND -------------- */
+:root{
+  --primary:#FF6B35;   /* naranja CTA */
+  --secondary:#FFB347; /* amarillo cálido */
+  --nature:#2F5233;    /* verde */
+  --light:#FAF3E0;     /* fondo */
   --dark:#2F2F2F;
+  --card:#ffffff;
+  --glass:rgba(255,255,255,0.85);
 }
 
-/* HEADER */
-header {
-  position:relative; height:100vh; display:flex; flex-direction:column;
-  justify-content:center; align-items:center; text-align:center; color:#fff;
-  background:url('imagen.jpg') center/cover no-repeat;
-}
-header::before {
-  content:""; position:absolute; top:0; left:0; width:100%; height:100%;
-  background:linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.6));
-  z-index:0;
-}
-.header-content { position:relative; z-index:1; max-width:90%; }
-header h1 { font-size:3rem; font-weight:700; margin-bottom:1rem; }
-header p { font-size:1.2rem; margin-bottom:2rem; }
+/* --------------- LAYOUT --------------- */
+.container{max-width:1200px;margin:0 auto;padding:0 1rem}
 
-/* BOTONES CINEMATOGRÁFICOS */
-.cta-button, form button, .instagram-block a {
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border-radius:50px;
-  display: inline-block;
-  padding: 1rem 2rem;
-  font-weight:700;
-  cursor:pointer;
-  background: var(--primary);
-  color:#fff;
-  font-size:1rem;
-  text-align:center;
+/* --------------- NAV / HEADER --------------- */
+.header {
+  position:sticky; top:0; z-index:1200;
+  backdrop-filter:saturate(120%) blur(6px);
+  background:linear-gradient(180deg, rgba(250,243,224,0.95), rgba(250,243,224,0.85));
+  border-bottom:3px solid rgba(255,107,53,0.06);
 }
-.cta-button::before, form button::before, .instagram-block a::before {
-  content: '';
-  position: absolute;
-  top: 50%; left: 50%;
-  width: 0; height: 0;
-  background: radial-gradient(circle, rgba(255,183,71,0.6) 0%, rgba(255,107,53,0.1) 70%);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition: width 0.5s ease, height 0.5s ease;
-  z-index: 0;
-}
-.cta-button:hover::before, form button:hover::before, .instagram-block a:hover::before {
-  width: 300%; height: 300%;
-}
-.cta-button:hover, form button:hover, .instagram-block a:hover {
-  transform: scale(1.12) rotate(-1deg);
-  box-shadow: 0 10px 25px rgba(255,107,53,0.6), 0 0 35px rgba(255,183,71,0.5);
-}
-.cta-button span, form button span, .instagram-block a span {
-  position: absolute;
-  display: block;
-  border-radius: 50%;
-  pointer-events: none;
-  background: radial-gradient(circle, rgba(255,183,71,1) 0%, rgba(255,107,53,0.5) 70%);
-  width: 6px;
-  height: 6px;
-  opacity: 0;
-  transform: translate(-50%, -50%);
-}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1rem;max-width:1200px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:0.75rem}
+.brand img{width:44px;height:44px;object-fit:cover;border-radius:10px;box-shadow:0 6px 18px rgba(47,47,47,0.08)}
+.brand h1{font-size:1.05rem;margin:0;color:var(--dark)}
+.nav{display:flex;gap:1rem;align-items:center}
+.nav a{padding:0.6rem 0.85rem;border-radius:10px;color:var(--dark);font-weight:600}
+.nav a:hover{background:rgba(47,82,51,0.07)}
+.nav .cta-small{background:var(--primary);color:#fff;padding:0.5rem 0.9rem;border-radius:999px;box-shadow:0 6px 20px rgba(255,107,53,0.15)}
 
-/* SECCIONES */
-section { padding:4rem 2rem; text-align:center; }
-section h2 { font-size:2rem; margin-bottom:2rem; color:var(--nature); }
+/* mobile nav toggle */
+.mobile-toggle{display:none;border:none;background:transparent;font-size:1.25rem;cursor:pointer}
 
-/* ACTIVIDADES */
-.activities-grid {
-  display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:2rem; max-width:1200px; margin:0 auto;
+/* --------------- HERO --------------- */
+.hero{
+  min-height:78vh; display:flex; align-items:center; justify-content:center;
+  background: url('imagen-hero.jpg') center/cover no-repeat;
+  position:relative;color:#fff;text-align:center;
 }
-.activity {
-  background:#fff; padding:1.5rem; border-radius:15px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.1);
-  transition:transform 0.3s ease, box-shadow 0.3s ease;
-  text-align:center;
-}
-.activity:hover {
-  transform:scale(1.05);
-  box-shadow:0 15px 30px rgba(255,107,53,0.3);
-}
-.activity h3 { margin-bottom:0.5rem; color:var(--primary); }
-.activity p { color:#555; }
-.activity i { font-size:40px; margin-bottom:10px; color:var(--nature); }
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.55));}
+.hero-inner{position:relative;z-index:2;padding:4rem 1rem;max-width:1000px}
+.hero h2{font-size:2.4rem;margin-bottom:0.5rem;letter-spacing:-0.5px}
+.hero p{font-size:1.05rem;margin-bottom:1.5rem;opacity:0.95}
 
-/* TESTIMONIOS */
-.testimonios-grid {
-  display:flex; flex-wrap:wrap; justify-content:center; gap:2rem;
+/* cinematic CTA main */
+.cta-button{
+  position: relative; overflow:hidden; z-index:1; transition:transform .32s ease, box-shadow .32s ease;
+  border-radius:50px; display:inline-block; padding:0.9rem 1.6rem; font-weight:700; cursor:pointer;
+  background:var(--primary); color:#fff; font-size:1rem; text-align:center; box-shadow:0 8px 28px rgba(255,107,53,0.15);
 }
-.testimonial {
-  background:#fff; padding:1.5rem; border-radius:20px;
-  min-width:300px; max-width:400px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.1);
-  transition:transform 0.3s ease;
+.cta-button::before{
+  content:'';position:absolute;top:50%;left:50%;width:0;height:0;border-radius:50%;
+  background:radial-gradient(circle, rgba(255,183,71,0.6) 0%, rgba(255,107,53,0.06) 70%);
+  transform:translate(-50%,-50%);transition:width .55s ease, height .55s ease; z-index:0;
 }
-.testimonial:hover { transform:scale(1.05); }
-.testimonial span { display:block; margin-top:0.5rem; color:var(--primary); font-weight:600; }
+.cta-button:hover::before{width:300%;height:300%}
+.cta-button:hover{transform:scale(1.08) rotate(-1deg);box-shadow:0 14px 40px rgba(255,107,53,0.25), 0 0 40px rgba(255,183,71,0.12)}
 
-/* GALERÍA */
-.gallery {
-  display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:1rem; max-width:1200px; margin:0 auto;
-}
+/* small helper */
+.lead-sub {font-weight:600;color:var(--light);opacity:0.95;display:block;margin-top:8px}
 
-/* FAQ */
-.faq-item {
-  background:#fff; padding:1rem 1.5rem; border-radius:12px;
-  margin-bottom:1rem; text-align:left; cursor:pointer;
-  transition:all 0.3s ease;
-}
-.faq-item:hover { background:#FFF5EC; }
-.faq-item h4 { margin-bottom:0.5rem; color:var(--primary); }
-.faq-item p { display:none; color:#555; }
+/* --------------- SECTIONS --------------- */
+section{padding:3.2rem 0}
+.section-title{display:flex;align-items:center;gap:0.75rem;flex-direction:column;text-align:center;margin-bottom:1.8rem}
+.section-title h3{margin:0;color:var(--nature);font-size:1.55rem}
+.section-sub{color:#555;margin-top:0.35rem;max-width:900px}
 
-/* FORMULARIO */
-form {
-  background:#fff; padding:2rem; border-radius:15px;
-  max-width:500px; width:90%; margin:2rem auto;
-  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+/* --------------- GRID / CARDS --------------- */
+.activities-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;
 }
-form input, form textarea {
-  width:100%; padding:0.8rem; margin-bottom:1rem;
-  border-radius:8px; border:1px solid #ccc; font-size:1rem;
+.card{
+  background:var(--card);padding:1.25rem;border-radius:14px;box-shadow:0 10px 25px rgba(0,0,0,0.06);
+  transition:transform .25s ease, box-shadow .25s ease;
 }
-form button {
-  position: relative; overflow: hidden; z-index:1;
-  width:100%; padding:1rem 2rem; border:none; font-weight:700; cursor:pointer;
-  background: var(--primary); color:#fff; border-radius:50px;
-}
-.confirmation { display:none; text-align:center; color:green; font-weight:700; margin-top:1rem; }
+.card:hover{transform:translateY(-6px);box-shadow:0 18px 36px rgba(47,82,51,0.08)}
+.card .icon{font-size:34px;color:var(--primary);margin-bottom:0.6rem}
+.card h4{margin:0 0 0.4rem 0}
+.card p{margin:0;color:#555;line-height:1.45}
 
-/* INSTAGRAM BLOCK */
-.instagram-block {
-  background:linear-gradient(135deg, var(--primary), var(--secondary));
-  color:#fff; padding:3rem 2rem; text-align:center;
-}
-.instagram-block h2 { font-size:2rem; margin-bottom:1rem; }
-.instagram-block p { margin-bottom:2rem; }
-.instagram-block a {
-  display:inline-block;
-  background:#fff; color:var(--primary); padding:1rem 2rem;
-  border-radius:50px; font-weight:700; transition:all 0.3s ease;
-}
+/* --------------- GALLERY --------------- */
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
 
-/* FOOTER */
-footer {
-  text-align:center; padding:2rem; font-size:0.9rem;
-  color:#666; background:#fff;
-}
-footer a { color:var(--primary); }
+/* --------------- BLOG --------------- */
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+.post{background:var(--card);padding:1rem;border-radius:12px;box-shadow:0 10px 25px rgba(0,0,0,0.06)}
+.post h4{margin:0 0 .5rem 0}
 
-/* RESPONSIVE ACTIVIDADES */
-@media (max-width: 900px) { .activities-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 600px) { .activities-grid { grid-template-columns: 1fr; } }
+/* --------------- TESTIMONIOS --------------- */
+.testi-wrap{display:flex;gap:1rem;overflow:auto;padding-bottom:0.5rem}
+.testi{min-width:260px;background:var(--card);padding:1rem;border-radius:12px;box-shadow:0 10px 25px rgba(0,0,0,0.06)}
+.testi p{margin:0;color:#444}
+.testi span{display:block;margin-top:0.6rem;color:var(--primary);font-weight:700}
+
+/* --------------- FAQ --------------- */
+.faq-list{max-width:900px;margin:0 auto}
+.faq-item{background:var(--card);padding:1rem 1.25rem;border-radius:12px;margin-bottom:0.8rem;cursor:pointer;transition:background .2s}
+.faq-item h4{margin:0;font-weight:600;color:var(--primary)}
+.faq-item p{margin-top:.6rem;color:#555;display:none}
+
+/* --------------- CONTACT / FORM --------------- */
+.form-wrap{max-width:620px;margin:0 auto}
+form{background:var(--card);padding:1.25rem;border-radius:12px;box-shadow:0 10px 25px rgba(0,0,0,0.06)}
+form input, form textarea, form select{
+  width:100%;padding:.75rem;border:1px solid #e5e5e5;border-radius:10px;margin-bottom:.8rem;font-size:0.95rem
+}
+form button{width:100%;padding:0.9rem;border:none;border-radius:50px;background:var(--primary);color:#fff;font-weight:700;cursor:pointer;position:relative;overflow:hidden}
+.small-note{font-size:0.9rem;color:#6b6b6b;margin-top:.6rem}
+
+/* --------------- NEWSLETTER --------------- */
+.newsletter{display:flex;gap:8px;justify-content:center;align-items:center;flex-wrap:wrap}
+.newsletter input{max-width:320px}
+
+/* --------------- FOOTER --------------- */
+.footer{background:var(--card);padding:1.6rem 0;border-top:4px solid rgba(47,82,51,0.04);text-align:center}
+.footer small{color:#666}
+
+/* --------------- RESPONSIVE --------------- */
+@media (max-width:900px){
+  .nav{display:none;position:absolute;top:64px;right:12px;background:var(--glass);box-shadow:0 8px 30px rgba(0,0,0,0.07);padding:10px;border-radius:12px;flex-direction:column}
+  .mobile-toggle{display:block}
+  .header-inner{padding:0.6rem 0.8rem}
+}
+@media (max-width:600px){
+  .hero h2{font-size:1.6rem}
+  .hero p{font-size:.95rem}
+}
 </style>
 </head>
 <body>
 
-<header>
-  <div class="header-content">
-    <h1>Tremendos Viajeros</h1>
-    <p>Vive experiencias únicas de turismo activo en Galicia.</p>
-    <a href="#leadForm" class="cta-button">¡Únete a la próxima aventura!</a>
+<!-- HEADER -->
+<header class="header" role="banner">
+  <div class="header-inner container">
+    <div class="brand">
+      <!-- logo: reemplaza logo.png por tu logo -->
+      <img src="logo.png" alt="Tremendos Viajeros logo">
+      <div>
+        <h1>Tremendos Viajeros</h1>
+        <small style="color:#666;font-weight:600">Turismo activo en Galicia</small>
+      </div>
+    </div>
+
+    <nav class="nav" aria-label="Menú principal">
+      <a href="#inicio">Inicio</a>
+      <a href="#quienes">Quiénes somos</a>
+      <a href="#actividades">Actividades</a>
+      <a href="#galeria">Galería</a>
+      <a href="#blog">Blog</a>
+      <a href="#faq">Preguntas</a>
+      <a href="#contacto" class="cta-small">Reserva</a>
+    </nav>
+
+    <button class="mobile-toggle" aria-label="Mostrar menú" id="mobileToggle"><i class="fa fa-bars"></i></button>
   </div>
 </header>
 
-<section id="actividades">
-  <h2>Nuestras Actividades</h2>
-  <div class="activities-grid">
-    <div class="activity">
-      <i class="fa-solid fa-water"></i>
-      <h3>Kayak</h3>
-      <p>Rutas guiadas en kayak por ríos y embalses de Galicia. Perfecto para todos los niveles.</p>
+<!-- HERO / INICIO -->
+<main id="inicio">
+  <section class="hero" aria-label="Hero - Inicio">
+    <div class="hero-inner container">
+      <h2>Vive Galicia en primera persona: kayak, senderismo y multiactividad</h2>
+      <p class="lead-sub">Fin de semana pack completo — alojamiento, guía titulado, seguro y aventura.</p>
+      <!-- CTA ancla al formulario -->
+      <a href="#leadForm" class="cta-button" id="mainCta">¡Únete a la próxima aventura!</a>
     </div>
-    <div class="activity">
-      <i class="fa-solid fa-mountain"></i>
-      <h3>Senderismo</h3>
-      <p>Explora paisajes espectaculares con rutas de medio día o fin de semana completo.</p>
+  </section>
+
+  <!-- QUIENES SOMOS -->
+  <section id="quienes" class="container" aria-labelledby="qs-title">
+    <div class="section-title">
+      <h3 id="qs-title">Quiénes somos</h3>
+      <p class="section-sub">Somos Tremendos Viajeros: un equipo de guías titulados que organizamos experiencias de turismo activo seguras, cercanas y llenas de aventura en Galicia.</p>
     </div>
-    <div class="activity">
-      <i class="fa-solid fa-bicycle"></i>
-      <h3>BTT</h3>
-      <p>Recorre senderos y montañas en bicicleta de montaña. Aventuras para todos los niveles.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 360px;gap:1rem;align-items:center">
+      <div>
+        <p style="color:#444;line-height:1.6">Llevamos años conectando a personas con la naturaleza. Nuestro enfoque combina seguridad técnica, diversión y una experiencia local auténtica. Ofrecemos packs para fines de semana, jornadas de iniciación y actividades personalizadas para grupos.</p>
+        <ul style="margin-top:1rem;color:#444">
+          <li>✓ Guías titulados y seguros incluidos</li>
+          <li>✓ Material de calidad y formación previa</li>
+          <li>✓ Grupos reducidos y experiencia personalizada</li>
+        </ul>
+        <div style="margin-top:1rem">
+          <a href="#actividades" class="cta-button" style="display:inline-block">Ver actividades</a>
+        </div>
+      </div>
+
+      <div style="border-radius:12px;overflow:hidden;box-shadow:0 10px 25px rgba(0,0,0,0.06)">
+        <img src="equipo-collage.jpg" alt="Equipo Tremendos Viajeros" style="width:100%;height:100%;object-fit:cover">
+      </div>
     </div>
-    <div class="activity">
-      <i class="fa-solid fa-bolt"></i>
-      <h3>EBike</h3>
-      <p>Disfruta del ciclismo con asistencia eléctrica, descubriendo rincones únicos sin esfuerzo extremo.</p>
+  </section>
+
+  <!-- ACTIVIDADES -->
+  <section id="actividades" class="container" aria-labelledby="act-title">
+    <div class="section-title"><h3 id="act-title">Actividades</h3><p class="section-sub">Elige la aventura que mejor se adapte a ti. Haz click en cualquiera para ver más detalles.</p></div>
+
+    <div class="activities-grid" id="activitiesGrid">
+      <!-- Card ejemplo -->
+      <article class="card" data-activity='{"title":"Kayak","desc":"Rutas guiadas por ríos y embalses. Todo el material incluido.","img":"kayak.jpg"}' tabindex="0" role="button" aria-pressed="false">
+        <div class="icon"><i class="fa-solid fa-water"></i></div>
+        <h4>Kayak</h4>
+        <p>Rutas guiadas por ríos y embalses. Todo el material incluido.</p>
+      </article>
+
+      <article class="card" data-activity='{"title":"Senderismo","desc":"Rutas por montañas y bosques. Niveles de media jornada o fin de semana.","img":"senderismo.jpg"}' tabindex="0" role="button" aria-pressed="false">
+        <div class="icon"><i class="fa-solid fa-mountain"></i></div>
+        <h4>Senderismo</h4>
+        <p>Rutas por montañas y bosques. Niveles de media jornada o fin de semana.</p>
+      </article>
+
+      <article class="card" data-activity='{"title":"BTT","desc":"Rutas en bicicleta de montaña con guía y asistencia técnica.","img":"btt.jpg"}' tabindex="0" role="button" aria-pressed="false">
+        <div class="icon"><i class="fa-solid fa-bicycle"></i></div>
+        <h4>BTT</h4>
+        <p>Rutas en bicicleta de montaña con guía y asistencia técnica.</p>
+      </article>
+
+      <article class="card" data-activity='{"title":"EBike","desc":"Descubre rutas con asistencia eléctrica, ideal para todo público.","img":"ebike.jpg"}' tabindex="0" role="button" aria-pressed="false">
+        <div class="icon"><i class="fa-solid fa-bolt"></i></div>
+        <h4>EBike</h4>
+        <p>Descubre rutas con asistencia eléctrica, ideal para todo público.</p>
+      </article>
+
+      <article class="card" data-activity='{"title":"Orientación","desc":"Talleres y pruebas de orientación con mapa y brújula.","img":"orientacion.jpg"}' tabindex="0" role="button" aria-pressed="false">
+        <div class="icon"><i class="fa-solid fa-compass"></i></div>
+        <h4>Orientación</h4>
+        <p>Talleres y pruebas de orientación con mapa y brújula.</p>
+      </article>
+
+      <article class="card" data-activity='{"title":"Multiactividad","desc":"Pack con kayak, senderismo y BTT/EBike + alojamiento y pensión completa.","img":"multiactividad.jpg"}' tabindex="0" role="button" aria-pressed="false">
+        <div class="icon"><i class="fa-solid fa-layer-group"></i></div>
+        <h4>Multiactividad</h4>
+        <p>Pack con kayak, senderismo y BTT/EBike + alojamiento y pensión completa.</p>
+      </article>
     </div>
-    <div class="activity">
-      <i class="fa-solid fa-compass"></i>
-      <h3>Orientación</h3>
-      <p>Aprende a moverte con mapas y brújula en plena naturaleza. Desafía tu mente y tu espíritu aventurero.</p>
+
+    <div style="text-align:center;margin-top:1.2rem">
+      <a class="cta-button" href="#blog">Ver packs y precios</a>
     </div>
-    <div class="activity">
-      <i class="fa-solid fa-layer-group"></i>
-      <h3>Multiactividad</h3>
-      <p>Combina kayak, senderismo y BTT/EBike en un pack completo. Una experiencia de aventura total en Galicia.</p>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="galeria" class="container" aria-labelledby="gal-title">
+    <div class="section-title"><h3 id="gal-title">Galería</h3><p class="section-sub">Fotos reales de nuestras salidas — inspírate.</p></div>
+    <div class="gallery-grid">
+      <img src="foto1.jpg" alt="Trekking">
+      <img src="foto2.jpg" alt="Kayak">
+      <img src="foto3.jpg" alt="Pedaleando">
+      <img src="foto4.jpg" alt="Orientación">
+      <img src="foto5.jpg" alt="Montaña">
+      <img src="foto6.jpg" alt="Atardecer">
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section id="blog" class="container" aria-labelledby="blog-title">
+    <div class="section-title"><h3 id="blog-title">Blog</h3><p class="section-sub">Artículos y consejos para preparar tu aventura.</p></div>
+    <div class="blog-grid">
+      <article class="post">
+        <h4>Cómo preparar tu primera ruta en kayak</h4>
+        <small style="color:#666">12 Sep 2025 • 4 min</small>
+        <p style="margin-top:.6rem;color:#444">Consejos de material, seguridad y técnica para disfrutar tu primera salida en kayak.</p>
+        <div style="margin-top:.6rem"><a href="#" class="cta-button" style="padding:0.5rem 0.9rem;font-size:.9rem">Leer</a></div>
+      </article>
+
+      <article class="post">
+        <h4>Rutas imperdibles en Ourense</h4>
+        <small style="color:#666">05 Sep 2025 • 3 min</small>
+        <p style="margin-top:.6rem;color:#444">Seleccionamos 5 rutas que no te puedes perder si vienes al Xurés y alrededores.</p>
+        <div style="margin-top:.6rem"><a href="#" class="cta-button" style="padding:0.5rem 0.9rem;font-size:.9rem">Leer</a></div>
+      </article>
+
+      <article class="post">
+        <h4>Equipamiento básico para un fin de semana multiactividad</h4>
+        <small style="color:#666">21 Ago 2025 • 5 min</small>
+        <p style="margin-top:.6rem;color:#444">Checklist práctico para que no falte de nada en tu escapada.</p>
+        <div style="margin-top:.6rem"><a href="#" class="cta-button" style="padding:0.5rem 0.9rem;font-size:.9rem">Leer</a></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- TESTIMONIOS -->
+  <section id="testimonios" class="container" aria-labelledby="testi-title">
+    <div class="section-title"><h3 id="testi-title">Testimonios</h3><p class="section-sub">Lo que nos cuentan quienes ya han venido.</p></div>
+    <div class="testi-wrap" aria-live="polite">
+      <div class="testi"><p>Una experiencia inolvidable, los guías súper profesionales.</p><span>— Ana V.</span></div>
+      <div class="testi"><p>Perfecto para desconectar y conectar con la naturaleza.</p><span>— Iban P.</span></div>
+      <div class="testi"><p>El pack multiactividad fue brutal, todo muy bien organizado.</p><span>— Carlos M.</span></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="container" aria-labelledby="faq-title">
+    <div class="section-title"><h3 id="faq-title">Preguntas frecuentes</h3><p class="section-sub">Respondemos las dudas más comunes.</p></div>
+
+    <div class="faq-list">
+      <div class="faq-item" tabindex="0"><h4>¿Qué incluye el pack?</h4><p>Actividades guiadas, seguro, materiales básicos, alojamiento (si aplica) y comidas indicadas en el pack.</p></div>
+      <div class="faq-item" tabindex="0"><h4>¿Necesito experiencia previa?</h4><p>No. La mayoría de actividades se adaptan a todos los niveles y los guías dan instrucciones claras antes de empezar.</p></div>
+      <div class="faq-item" tabindex="0"><h4>¿Hay edad mínima?</h4><p>Depende de la actividad. Para actividades con agua recomendamos a partir de 12 años, pero contacta si tienes dudas.</p></div>
+    </div>
+  </section>
+
+  <!-- CONTACTO / RESERVA -->
+  <section id="contacto" class="container" aria-labelledby="contact-title">
+    <div class="section-title"><h3 id="contact-title">Contacto & Reserva</h3><p class="section-sub">Rellena el formulario y te escribimos en menos de 48h (o llámanos).</p></div>
+
+    <div style="display:grid;grid-template-columns:1fr 360px;gap:1.25rem;align-items:start">
+      <div class="form-wrap">
+        <form id="leadForm" aria-label="Formulario de reserva">
+          <label for="name">Nombre *</label>
+          <input id="name" name="name" type="text" placeholder="Tu nombre" required>
+
+          <label for="email">Email *</label>
+          <input id="email" name="email" type="email" placeholder="tu@mail.com" required>
+
+          <label for="phone">Teléfono</label>
+          <input id="phone" name="phone" type="tel" placeholder="+34 6...">
+
+          <label for="activity">Actividad de interés</label>
+          <select id="activity" name="activity">
+            <option value="">-- Elige una --</option>
+            <option>Kayak</option>
+            <option>Senderismo</option>
+            <option>BTT</option>
+            <option>EBike</option>
+            <option>Orientación</option>
+            <option>Multiactividad</option>
+          </select>
+
+          <label for="message">Mensaje (opcional)</label>
+          <textarea id="message" name="message" rows="4" placeholder="¿Fecha aproximada? ¿Grupo?"></textarea>
+
+          <button type="submit" class="cta-button">¡Quiero la próxima aventura!</button>
+          <div class="small-note">Al enviar aceptas nuestra política de privacidad.</div>
+          <div id="formConfirmation" style="display:none;margin-top:.8rem;color:green;font-weight:700">¡Recibido! Nos pondremos en contacto.</div>
+        </form>
+      </div>
+
+      <aside style="background:var(--card);padding:1rem;border-radius:12px;box-shadow:0 10px 25px rgba(0,0,0,0.06)">
+        <h4>Contacto rápido</h4>
+        <p style="margin:0.4rem 0">📞 <a href="tel:+34123456789">+34 123 456 789</a></p>
+        <p style="margin:0.4rem 0">✉️ <a href="mailto:info@tremendosviajeros.com">info@tremendosviajeros.com</a></p>
+        <div style="margin-top:1rem">
+          <h5 style="margin:0 0 .3rem 0">Síguenos</h5>
+          <div style="display:flex;gap:.5rem">
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+          </div>
+        </div>
+
+        <div style="margin-top:1rem">
+          <h5 style="margin:0 0 .3rem 0">Newsletter</h5>
+          <div class="newsletter">
+            <input type="email" id="newsletterEmail" placeholder="tu@mail.com">
+            <button id="newsletterBtn" class="cta-button" style="padding:0.5rem 0.9rem;font-size:.9rem">Suscribir</button>
+          </div>
+          <small style="display:block;margin-top:.6rem;color:#666">Prometemos pocos correos y contenido útil.</small>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Mapa (opcional) -->
+    <div style="margin-top:1.1rem">
+      <!-- Pon tu iframe de Google Maps si quieres: -->
+      <!-- <iframe src="TU_EMBED_GOOGLE_MAPS" width="100%" height="260" style="border:0;border-radius:12px"></iframe> -->
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <small>© <span id="year"></span> Tremendos Viajeros — Todos los derechos reservados.</small>
+      <div style="margin-top:.6rem">
+        <a href="aviso-legal.html">Aviso Legal</a> |
+        <a href="politica-privacidad.html">Política de Privacidad</a> |
+        <a href="politica-cookies.html">Cookies</a>
+      </div>
+    </div>
+  </footer>
+</main>
+
+<!-- ---------------- MODAL ACTIVIDAD ---------------- -->
+<div id="activityModal" role="dialog" aria-modal="true" aria-hidden="true" style="display:none;position:fixed;inset:0;z-index:2000;align-items:center;justify-content:center;padding:1rem">
+  <div style="background:rgba(0,0,0,0.5);position:absolute;inset:0;"></div>
+  <div style="position:relative;z-index:2;max-width:880px;width:100%;background:var(--card);border-radius:12px;padding:1rem;box-shadow:0 20px 60px rgba(0,0,0,0.4)">
+    <button id="closeModal" style="position:absolute;right:12px;top:12px;background:transparent;border:none;font-size:1.2rem;cursor:pointer" aria-label="Cerrar modal">&times;</button>
+    <div style="display:grid;grid-template-columns:1fr 320px;gap:1rem;align-items:start">
+      <div>
+        <img id="modalImg" src="" alt="" style="width:100%;height:260px;object-fit:cover;border-radius:8px">
+        <h3 id="modalTitle" style="margin-top:.8rem"></h3>
+        <p id="modalDesc" style="color:#444"></p>
+      </div>
+      <aside style="background:linear-gradient(180deg, rgba(255,107,53,0.06), rgba(255,183,71,0.03));padding:1rem;border-radius:8px">
+        <h4>Reservar</h4>
+        <p style="margin:0.4rem 0">¿Interesado? Pulsa en reservar para ir al formulario.</p>
+        <div style="margin-top:.6rem">
+          <a href="#leadForm" class="cta-button" id="modalReserve">Reservar ahora</a>
+        </div>
+      </aside>
     </div>
   </div>
-</section>
-
-<section id="galeria">
-  <h2>Galería de Experiencias</h2>
-  <div class="gallery">
-    <img src="foto1.jpg" alt="Trekking">
-    <img src="foto2.jpg" alt="Senderismo en Galicia">
-    <img src="foto3.jpg" alt="Montañismo">
-  </div>
-</section>
-
-<section class="testimonios">
-  <h2>Lo que dicen nuestros aventureros</h2>
-  <div class="testimonios-grid">
-    <div class="testimonial"><p>"Una experiencia inolvidable."</p><span>Ana V.</span></div>
-    <div class="testimonial"><p>"Me habéis enganchado a la orientación."</p><span>Iban P.</span></div>
-    <div class="testimonial"><p>"Kayak y senderismo combinados, todo perfecto."</p><span>Carlos M.</span></div>
-  </div>
-</section>
-
-<section id="faq">
-  <h2>Preguntas Frecuentes</h2>
-  <div class="faq-item"><h4>¿Qué incluye el pack?</h4><p>Actividades guiadas, seguro y materiales.</p></div>
-  <div class="faq-item"><h4>¿Necesito experiencia previa?</h4><p>No, están adaptadas a todos los niveles.</p></div>
-</section>
-
-<form id="leadForm">
-  <input type="text" name="nombre" placeholder="Nombre" required>
-  <input type="email" name="email" placeholder="Email" required>
-  <input type="tel" name="telefono" placeholder="Teléfono" required>
-  <textarea name="mensaje" placeholder="Cómo nos conociste (opcional)" rows="3"></textarea>
-  <textarea name="mensaje" placeholder="Más info (opcional)" rows="3"></textarea>
-  <button type="submit">¡Quiero la próxima aventura!</button>
-  <div class="confirmation">¡Recibido! Nos pondremos en contacto.</div>
-</form>
-
-<div class="instagram-block">
-  <h2>¿Quieres ver más aventuras en acción?</h2>
-  <p>Síguenos en Instagram y vive la experiencia Tremendos Viajeros.</p>
-  <a href="https://instagram.com/tremendosviajeros" target="_blank">📸 Ir a Instagram</a>
 </div>
 
-<footer>
-  © 2025 Tremendos Viajeros. Todos los derechos reservados.  
-  <br>Contacto: info@tremendosviajeros.com  
-  <br><br>
-  <a href="aviso-legal.html">Aviso Legal</a> | 
-  <a href="condiciones-generales.html">Condiciones Generales</a> | 
-  <a href="politica-privacidad.html">Política de Privacidad</a> | 
-  <a href="politica-cookies.html">Política de Cookies</a> | 
-  <a href="envios-devoluciones.html">Envíos y Devoluciones</a>
-</footer>
-
+<!-- ---------------- SCRIPTS ---------------- -->
 <script>
-// FAQ expandible
-document.querySelectorAll('.faq-item').forEach(item => {
-  item.addEventListener('click', () => {
-    const p = item.querySelector('p');
-    p.style.display = p.style.display === 'block' ? 'none' : 'block';
-    item.classList.toggle('active');
+/* DOMContentLoaded para seguridad */
+document.addEventListener('DOMContentLoaded', function(){
+
+  /* Año en el footer */
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* NAV móvil toggle */
+  const mobileBtn = document.getElementById('mobileToggle');
+  const navEl = document.querySelector('.nav');
+  mobileBtn.addEventListener('click', ()=> {
+    if(navEl.style.display === 'flex') { navEl.style.display = 'none'; mobileBtn.innerHTML = '<i class="fa fa-bars"></i>' }
+    else { navEl.style.display = 'flex'; mobileBtn.innerHTML = '<i class="fa fa-times"></i>' }
   });
-});
 
-// Partículas cinematográficas en botones
-function crearParticulas(btn, cantidad=25) {
-  for(let i=0; i<cantidad; i++){
-    const span = document.createElement('span');
-    btn.appendChild(span);
-    const angle = Math.random()*2*Math.PI;
-    const radius = Math.random()*(btn.offsetWidth/2);
-    const startX = btn.offsetWidth/2 + radius*Math.cos(angle);
-    const startY = btn.offsetHeight/2 + radius*Math.sin(angle);
-    span.style.left = `${startX}px`;
-    span.style.top = `${startY}px`;
-    span.style.width = span.style.height = `${Math.random()*6+4}px`;
-    span.style.opacity = 1;
-    const animX = (Math.random()-0.5)*150;
-    const animY = (Math.random()-0.5)*150;
-    span.animate([
-      { transform:'translate(0,0) scale(1)', opacity:1 },
-      { transform:`translate(${animX}px, ${animY}px) scale(0.3)`, opacity:0 }
-    ], { duration:900+Math.random()*500, easing:'cubic-bezier(0.4,0,0.2,1)' });
-    setTimeout(()=>{ span.remove(); }, 1400);
+  /* Cerrar menú al click en enlace (mobile) */
+  document.querySelectorAll('.nav a').forEach(a=>{
+    a.addEventListener('click', ()=> { if(window.innerWidth <= 900) { navEl.style.display='none'; mobileBtn.innerHTML = '<i class="fa fa-bars"></i>' } });
+  });
+
+  /* ACTIVITIES modal: abrir según card data */
+  const activityCards = document.querySelectorAll('#activitiesGrid .card');
+  const modal = document.getElementById('activityModal');
+  const modalImg = document.getElementById('modalImg');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalDesc = document.getElementById('modalDesc');
+  const closeModal = document.getElementById('closeModal');
+
+  function openActivityModal(data){
+    modalImg.src = data.img || 'imagen-hero.jpg';
+    modalImg.alt = data.title || 'Actividad';
+    modalTitle.textContent = data.title || '';
+    modalDesc.textContent = data.desc || '';
+    modal.style.display = 'flex';
+    modal.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
   }
-}
+  function closeActivityModal(){
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+  }
 
-const ctas = document.querySelectorAll('.cta-button, form button, .instagram-block a');
-ctas.forEach(btn => {
-  btn.addEventListener('mouseenter', () => crearParticulas(btn,25));
+  activityCards.forEach(card=>{
+    card.addEventListener('click', ()=> {
+      const raw = card.getAttribute('data-activity') || '{}';
+      try{ const data = JSON.parse(raw); openActivityModal(data); }
+      catch(e){ console.warn('actividad data parse error', e) }
+    });
+    card.addEventListener('keypress', (e)=>{
+      if(e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const raw = card.getAttribute('data-activity') || '{}';
+        try{ const data = JSON.parse(raw); openActivityModal(data); } catch(e){}
+      }
+    });
+  });
+
+  closeModal.addEventListener('click', closeActivityModal);
+  modal.addEventListener('click', (e)=>{ if(e.target === modal) closeActivityModal(); });
+
+  /* FAQ acordeón (click y tecla Enter) */
+  document.querySelectorAll('.faq-item').forEach(item=>{
+    const show = ()=> {
+      const p = item.querySelector('p');
+      const isOpen = p.style.display === 'block';
+      document.querySelectorAll('.faq-item p').forEach(pp=>pp.style.display='none');
+      if(!isOpen) p.style.display = 'block'; else p.style.display = 'none';
+    };
+    item.addEventListener('click', show);
+    item.addEventListener('keypress', (e)=>{ if(e.key==='Enter' || e.key===' ') { e.preventDefault(); show(); } });
+  });
+
+  /* FORM submission - ejemplo simple (sustituir por ajax / backend) */
+  const form = document.getElementById('leadForm');
+  const formConf = document.getElementById('formConfirmation');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    // Aquí podrías integrar con tu backend (fetch/post) o con una herramienta (Zapier, Make, Mailchimp...)
+    // Simulación de envío:
+    formConf.style.display = 'block';
+    form.reset();
+    setTimeout(()=>{ formConf.style.display='none'; }, 5000);
+  });
+
+  /* NEWSLETTER ejemplo (solo UI) */
+  document.getElementById('newsletterBtn').addEventListener('click', function(e){
+    e.preventDefault();
+    const email = document.getElementById('newsletterEmail').value.trim();
+    if(!email){ alert('Introduce un email válido'); return; }
+    // Integrar con tu servicio real aquí
+    alert('¡Gracias! Hemos recibido tu suscripción: ' + email);
+    document.getElementById('newsletterEmail').value = '';
+  });
+
+  /* PARTICULAS cinematográficas en botones - función reutilizable */
+  function crearParticulas(btn, cantidad=20){
+    for(let i=0;i<cantidad;i++){
+      const span = document.createElement('span');
+      span.style.position='absolute';
+      span.style.pointerEvents='none';
+      const size = (Math.random()*6)+4;
+      span.style.width = span.style.height = size + 'px';
+      span.style.left = (btn.offsetWidth/2 + (Math.random()-0.5)*(btn.offsetWidth*0.6)) + 'px';
+      span.style.top = (btn.offsetHeight/2 + (Math.random()-0.5)*(btn.offsetHeight*0.6)) + 'px';
+      span.style.borderRadius='50%';
+      span.style.background = 'radial-gradient(circle, rgba(255,183,71,1) 0%, rgba(255,107,53,0.5) 70%)';
+      span.style.opacity = '1';
+      btn.appendChild(span);
+      const animX = (Math.random()-0.5)*160;
+      const animY = (Math.random()-0.5)*160;
+      const dur = 800 + Math.random()*600;
+      span.animate([
+        { transform:'translate(0,0) scale(1)', opacity:1 },
+        { transform:`translate(${animX}px, ${animY}px) scale(0.3)`, opacity:0 }
+      ], { duration: dur, easing: 'cubic-bezier(.4,0,.2,1)' });
+      setTimeout(()=>{ if(span && span.parentNode) span.parentNode.removeChild(span); }, dur + 80);
+    }
+  }
+
+  /* Asociar hover/enter a botones CTA */
+  const ctas = document.querySelectorAll('.cta-button, .cta-small');
+  ctas.forEach(btn=>{
+    btn.addEventListener('mouseenter', ()=> crearParticulas(btn, 14));
+    // accesibilidad keyboard: crear partículas al focus también
+    btn.addEventListener('focus', ()=> crearParticulas(btn, 8));
+  });
+
+  /* Accessibility: focus visible management (simple) */
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Tab') { document.body.classList.add('show-focus'); }
+  });
+
+  /* Cerrar nav si se hace resize mayor */
+  window.addEventListener('resize', ()=> { if(window.innerWidth > 900){ navEl.style.display = 'flex'; mobileBtn.innerHTML = '<i class="fa fa-bars"></i>' } });
+
+  /* Pequeño ajuste: si el usuario llega con hash al cargar, scroll suavizado ya lo hace el navegador */
 });
 </script>
-
 </body>
 </html>
