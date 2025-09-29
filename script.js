@@ -1,54 +1,66 @@
-// ========================
-// PRELOADER
-// ========================
+// ===== PRELOADER =====
 window.addEventListener('load', () => {
-    const preloader = document.getElementById('preloader');
-    preloader.style.opacity = '0';
-    setTimeout(() => { preloader.style.display = 'none'; }, 500);
+  const preloader = document.getElementById('preloader');
+  preloader.style.opacity = '0';
+  setTimeout(() => preloader.style.display = 'none', 500);
 });
 
-// ========================
-// CTA SMOOTH SCROLL
-// ========================
-document.querySelectorAll('.cta-button').forEach(button => {
-    button.addEventListener('click', () => {
-        const form = document.getElementById('leadForm');
-        form.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
+// ===== SMOOTH SCROLL AL FORMULARIO =====
+document.querySelectorAll('.cta-button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const formSection = document.getElementById('contacto');
+    formSection.scrollIntoView({ behavior: 'smooth' });
+  });
 });
 
-// ========================
-// FAQ TOGGLE
-// ========================
+// ===== FAQ TOGGLE =====
 document.querySelectorAll('.faq-item').forEach(item => {
-    item.addEventListener('click', () => {
-        const p = item.querySelector('p');
-        p.style.display = (p.style.display === 'block') ? 'none' : 'block';
-    });
+  item.addEventListener('click', () => {
+    const p = item.querySelector('p');
+    p.style.display = (p.style.display === 'block') ? 'none' : 'block';
+  });
 });
 
-// ========================
-// LAZY LOAD IMAGES
-// ========================
-const lazyImages = document.querySelectorAll('img');
-lazyImages.forEach(img => img.loading = 'lazy');
+// ===== CONTADORES DE INSCRIPCIONES =====
+function initializeCountdown() {
+  const countdowns = document.querySelectorAll('.countdown');
+  countdowns.forEach(cd => {
+    const deadline = new Date(cd.dataset.deadline).getTime();
+    const timerSpan = cd.querySelector('.timer');
 
-// ========================
-// FORM SUBMISSION TO GOOGLE SHEETS
-// ========================
-const scriptURL = 'TU_URL_DE_GOOGLE_APPS_SCRIPT'; // reemplaza con tu Apps Script
+    const interval = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = deadline - now;
+
+      if(distance < 0){
+        clearInterval(interval);
+        timerSpan.innerHTML = "Inscripciones cerradas";
+      } else {
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
+        const minutes = Math.floor((distance % (1000*60*60))/(1000*60));
+        const seconds = Math.floor((distance % (1000*60))/1000);
+        timerSpan.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      }
+    }, 1000);
+  });
+}
+initializeCountdown();
+
+// ===== FORMULARIO DE CONTACTO (SIMPLE CONFIRMACIÓN) =====
 const form = document.getElementById('leadForm');
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  // Aquí se puede integrar Google Sheets o backend de envío
+  form.querySelector('.confirmation').style.display = 'block';
+  form.reset();
+});
 
-form.addEventListener('submit', e => {
+// ===== OPCIONAL: Animación de scroll suave para links internos =====
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e){
     e.preventDefault();
-    const formData = new FormData(form);
-    fetch(scriptURL, { method: 'POST', body: formData })
-        .then(() => {
-            form.reset();
-            document.querySelector('.confirmation').style.display = 'block';
-            setTimeout(() => {
-                document.querySelector('.confirmation').style.display = 'none';
-            }, 5000);
-        })
-        .catch(error => console.error('Error!', error.message));
+    const target = document.querySelector(this.getAttribute('href'));
+    if(target) target.scrollIntoView({behavior:'smooth'});
+  });
 });
