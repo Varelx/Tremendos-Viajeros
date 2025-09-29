@@ -45,7 +45,7 @@ lazyImages.forEach(img => {
 // FORM SUBMISSION TO GOOGLE SHEETS
 // ========================
 
-const scriptURL = 'TU_URL_DE_GOOGLE_APPS_SCRIPT'; // <-- reemplaza con tu URL del Apps Script
+const scriptURL = 'https://script.google.com/macros/s/AKfycbxUj3xTxV61RXMXc_96uDoALfcp8ANu9jDoxbq-qZib-EpwhosuthFgbqDs7D6iQFEyTA/exec'; // <-- reemplaza con tu URL del Apps Script
 const form = document.getElementById('leadForm');
 
 form.addEventListener('submit', e => {
