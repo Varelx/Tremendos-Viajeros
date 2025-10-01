@@ -91,7 +91,7 @@ nav a:hover { color: #005577; }
 
 /* ===== HERO ===== */
 .hero {
-  height: 100vh;
+  min-height: 100vh;      /* usar min-height en lugar de height */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -99,6 +99,7 @@ nav a:hover { color: #005577; }
   padding-top: 120px; 
   background: url('img/portada.jpg') center/cover no-repeat;
   position: relative;
+  overflow: visible;       /* asegurarse de que el contenido no bloquee */
 }
 
 .hero::before {
