@@ -18,12 +18,12 @@
 </head>
 <body>
 
-<!-- ===== PRELOADER ===== -->
+<!-- PRELOADER -->
 <div id="preloader">
   <h1>Tremendos Viajeros</h1>
 </div>
 
-<!-- ===== BARRA SUPERIOR ===== -->
+<!-- BARRA SUPERIOR -->
 <div class="top-bar">
   <div>📍 Galicia | ☎ 605 25 00 05 | ✉ info@tremendosviajeros.es</div>
   <div>
@@ -33,7 +33,7 @@
   </div>
 </div>
 
-<!-- ===== HEADER / HERO ===== -->
+<!-- HEADER -->
 <header id="main-header">
   <div class="header-container">
     <div class="logo">
@@ -55,19 +55,19 @@
   </div>
 </header>
 
-<!-- ===== QUIÉNES SOMOS ===== -->
+<!-- QUIÉNES SOMOS -->
 <section id="quienes-somos">
   <h2>Quiénes Somos</h2>
   <p>Somos Tremendos Viajeros, un equipo de guías profesionales apasionados por la naturaleza y la aventura. Nuestro objetivo es ofrecer experiencias inolvidables en Galicia combinando diversión, seguridad y profesionalidad.</p>
-  <img src="img/foto2.jpg" alt="Nuestro equipo de guías">
+  <img src="img/foto2.jpg" alt="Nuestro equipo de guías" loading="lazy">
 </section>
 
-<!-- ===== ACTIVIDADES ===== -->
+<!-- ACTIVIDADES -->
 <section id="actividades">
   <h2>Nuestras Experiencias</h2>
   <div class="activities-grid">
     <div class="activity">
-      <img src="img/foto1.jpg" alt="Fin de semana en el Xurés">
+      <img src="img/foto1.jpg" alt="Fin de semana en el Xurés" loading="lazy">
       <h3>Fin de semana en el Xurés</h3>
       <p>Senderismo, kayak y orientación combinados en un pack completo.</p>
       <div class="price">200€ / persona</div>
@@ -75,7 +75,7 @@
       <div class="cta-button">¡Reserva tu plaza!</div>
     </div>
     <div class="activity">
-      <img src="img/foto3.jpg" alt="Explora la Ribeira Sacra">
+      <img src="img/foto3.jpg" alt="Explora la Ribeira Sacra" loading="lazy">
       <h3>Explora la Ribeira Sacra</h3>
       <p>Recorre paisajes impresionantes mientras aprendes orientación y kayak.</p>
       <div class="price">200€ / persona</div>
@@ -85,17 +85,17 @@
   </div>
 </section>
 
-<!-- ===== GALERÍA ===== -->
+<!-- GALERÍA -->
 <section id="galeria">
   <h2>Galería de Experiencias</h2>
   <div class="gallery">
-    <img src="img/foto1.jpg" alt="Senderismo en Galicia">
-    <img src="img/foto2.jpg" alt="Grupo explorando">
-    <img src="img/foto3.jpg" alt="Montañismo">
+    <img src="img/foto1.jpg" alt="Senderismo en Galicia" loading="lazy">
+    <img src="img/foto2.jpg" alt="Grupo explorando" loading="lazy">
+    <img src="img/foto3.jpg" alt="Montañismo" loading="lazy">
   </div>
 </section>
 
-<!-- ===== TESTIMONIOS ===== -->
+<!-- TESTIMONIOS -->
 <section class="testimonios">
   <h2>Lo que dicen nuestros aventureros</h2>
   <div class="testimonios-grid">
@@ -105,14 +105,14 @@
   </div>
 </section>
 
-<!-- ===== FAQ ===== -->
+<!-- FAQ -->
 <section id="faq">
   <h2>Preguntas Frecuentes</h2>
   <div class="faq-item"><h4>¿Qué incluye el pack?</h4><p>Actividades guiadas, seguro y materiales.</p></div>
   <div class="faq-item"><h4>¿Necesito experiencia previa?</h4><p>No, están adaptadas a todos los niveles.</p></div>
 </section>
 
-<!-- ===== FORMULARIO DE CONTACTO ===== -->
+<!-- FORMULARIO DE CONTACTO -->
 <section id="contacto">
   <h2>Contacto / Reserva</h2>
   <form id="leadForm">
@@ -125,20 +125,20 @@
   </form>
 </section>
 
-<!-- ===== RESEÑAS GOOGLE MAPS ===== -->
+<!-- RESEÑAS GOOGLE MAPS -->
 <section id="reseñas">
   <h2>Reseñas de Clientes</h2>
-  <iframe src="TU_URL_DE_GOOGLE_MAPS" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  <iframe src="TU_URL_DE_GOOGLE_MAPS_AQUI" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 </section>
 
-<!-- ===== INSTAGRAM ===== -->
+<!-- INSTAGRAM -->
 <div class="instagram-block">
   <h2>¿Quieres ver más aventuras?</h2>
   <p>Síguenos en Instagram y vive la experiencia Tremendos Viajeros.</p>
   <a href="https://instagram.com/tremendosviajeros" target="_blank">📸 Ir a Instagram</a>
 </div>
 
-<!-- ===== FOOTER ===== -->
+<!-- FOOTER -->
 <footer>
   © 2025 Tremendos Viajeros. Todos los derechos reservados.<br>
   Contacto: info@tremendosviajeros.com<br><br>
@@ -149,7 +149,60 @@
   <a href="envios-devoluciones.html">Envíos y Devoluciones</a>
 </footer>
 
-<!-- JS -->
-<script src="script.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // PRELOADER
+  const preloader = document.getElementById('preloader');
+  if(preloader){ preloader.style.opacity = '0'; setTimeout(() => preloader.style.display = 'none', 500); }
+
+  // FORMULARIO
+  const form = document.getElementById('leadForm');
+  if(form){
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const confirmation = form.querySelector('.confirmation');
+      if(confirmation) confirmation.style.display = 'block';
+      form.reset();
+    });
+  }
+
+  // BOTONES CTA
+  document.querySelectorAll('.cta-button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const formSection = document.getElementById('contacto');
+      if(formSection) formSection.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  // FAQ TOGGLE
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const p = item.querySelector('p');
+      if(p) p.style.display = (p.style.display === 'block') ? 'none' : 'block';
+    });
+  });
+
+  // CONTADORES
+  document.querySelectorAll('.countdown').forEach(cd => {
+    const deadline = new Date(cd.dataset.deadline).getTime();
+    const timerSpan = cd.querySelector('.timer');
+    const interval = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = deadline - now;
+      if(distance < 0){
+        clearInterval(interval);
+        if(timerSpan) timerSpan.innerHTML = "Inscripciones cerradas";
+      } else {
+        const days = Math.floor(distance/(1000*60*60*24));
+        const hours = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
+        const minutes = Math.floor((distance % (1000*60*60))/(1000*60));
+        const seconds = Math.floor((distance % (1000*60))/1000);
+        if(timerSpan) timerSpan.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      }
+    }, 1000);
+  });
+});
+</script>
+
 </body>
 </html>
