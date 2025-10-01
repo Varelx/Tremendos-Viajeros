@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // PRELOADER
   const preloader = document.getElementById('preloader');
-  if(preloader) {
+  if(preloader){
     preloader.style.opacity = '0';
     setTimeout(() => preloader.style.display = 'none', 500);
   }
@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // FORMULARIO
   const form = document.getElementById('leadForm');
   if(form){
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', e => {
       e.preventDefault();
       const confirmation = form.querySelector('.confirmation');
       if(confirmation) confirmation.style.display = 'block';
@@ -35,8 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // CONTADORES
-  const countdowns = document.querySelectorAll('.countdown');
-  countdowns.forEach(cd => {
+  document.querySelectorAll('.countdown').forEach(cd => {
     const deadline = new Date(cd.dataset.deadline).getTime();
     const timerSpan = cd.querySelector('.timer');
     const interval = setInterval(() => {
@@ -46,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
         clearInterval(interval);
         if(timerSpan) timerSpan.innerHTML = "Inscripciones cerradas";
       } else {
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const days = Math.floor(distance/(1000*60*60*24));
         const hours = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
         const minutes = Math.floor((distance % (1000*60*60))/(1000*60));
         const seconds = Math.floor((distance % (1000*60))/1000);
@@ -54,5 +53,4 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }, 1000);
   });
-
 });
