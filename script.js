@@ -2,10 +2,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // PRELOADER
   const preloader = document.getElementById('preloader');
-  if(preloader){
-    preloader.style.opacity = '0';
-    setTimeout(() => preloader.style.display = 'none', 500);
-  }
+if(preloader){
+  preloader.style.opacity = '0';
+  setTimeout(() => {
+    preloader.style.display = 'none';
+    document.body.style.overflow = 'auto';  // desbloquear scroll
+  }, 500);
+}
 
   // FORMULARIO
   const form = document.getElementById('leadForm');
