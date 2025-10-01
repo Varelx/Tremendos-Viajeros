@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html lang="es">
-  
 <head>
-  
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tremendos Viajeros - Turismo Activo en Galicia</title>
-<meta name="description" content="Vive experiencias únicas de turismo activo en Galicia. Kayak, senderismo, BTT, orientación y multiactividad con Tremendos Viajeros.">
-<meta name="keywords" content="Turismo activo, Galicia, Kayak, Senderismo, BTT, Multiactividad, Orientación, Experiencias, Aventura">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="favicon/favicon-apple-touch-icon.png">
-<link rel="manifest" href="site.webmanifest">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tremendos Viajeros - Turismo Activo en Galicia</title>
+  <meta name="description" content="Vive experiencias únicas de turismo activo en Galicia. Kayak, senderismo, BTT, orientación y multiactividad con Tremendos Viajeros.">
+  <meta name="keywords" content="Turismo activo, Galicia, Kayak, Senderismo, BTT, Multiactividad, Orientación, Experiencias, Aventura">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/favicon-apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
 
+  <!-- Fuentes y CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <!-- ===== PRELOADER ===== -->
-<div id="preloader" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#2E8B57;display:flex;justify-content:center;align-items:center;z-index:9999;">
-  <h1 style="color:#fff;font-size:2rem;">Tremendos Viajeros</h1>
+<div id="preloader">
+  <h1>Tremendos Viajeros</h1>
 </div>
 
 <!-- ===== BARRA SUPERIOR ===== -->
@@ -34,7 +34,7 @@
   </div>
 </div>
 
-<!-- ===== HEADER (menú fijo con scroll) ===== -->
+<!-- ===== HEADER / HERO ===== -->
 <header id="main-header">
   <div class="header-container">
     <div class="logo">
@@ -47,16 +47,14 @@
       <a href="#contacto">CONTACTO</a>
     </nav>
   </div>
-</header>
-
-<!-- ===== PORTADA (hero section) ===== -->
-<section class="hero">
-  <div class="header-content">
-    <h1>Vive la Aventura</h1>
-    <p>Experiencias únicas de turismo activo en Galicia.</p>
-    <div class="cta-button">¡Únete a la próxima aventura!</div>
+  <div class="hero">
+    <div class="header-content">
+      <h1>Vive la Aventura</h1>
+      <p>Experiencias únicas de turismo activo en Galicia.</p>
+      <div class="cta-button">¡Únete a la próxima aventura!</div>
+    </div>
   </div>
-</section>
+</header>
 
 <!-- ===== QUIÉNES SOMOS ===== -->
 <section id="quienes-somos">
@@ -65,15 +63,10 @@
   <img src="foto2.jpg" alt="Nuestro equipo de guías">
 </section>
 
-<script src="script.js"></script>
-</body>
-
-<!-- ===== ACTIVIDADES / EXPERIENCIAS ===== -->
+<!-- ===== ACTIVIDADES ===== -->
 <section id="actividades">
   <h2>Nuestras Experiencias</h2>
   <div class="activities-grid">
-
-    <!-- Plantilla experiencia -->
     <div class="activity">
       <img src="foto1.jpg" alt="Fin de semana en el Xurés">
       <h3>Fin de semana en el Xurés</h3>
@@ -82,7 +75,6 @@
       <div class="countdown" data-deadline="2025-10-15T23:59:59">Cierre inscripciones: <span class="timer"></span></div>
       <div class="cta-button">¡Reserva tu plaza!</div>
     </div>
-
     <div class="activity">
       <img src="foto3.jpg" alt="Explora la Ribeira Sacra">
       <h3>Explora la Ribeira Sacra</h3>
@@ -91,9 +83,6 @@
       <div class="countdown" data-deadline="2025-11-01T23:59:59">Cierre inscripciones: <span class="timer"></span></div>
       <div class="cta-button">¡Reserva tu plaza!</div>
     </div>
-
-    <!-- Más experiencias se pueden duplicar usando esta plantilla -->
-
   </div>
 </section>
 
@@ -137,7 +126,7 @@
   </form>
 </section>
 
-<!-- ===== GOOGLE MAPS RESEÑAS ===== -->
+<!-- ===== RESEÑAS GOOGLE MAPS ===== -->
 <section id="reseñas">
   <h2>Reseñas de Clientes</h2>
   <iframe src="TU_URL_DE_GOOGLE_MAPS" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -152,9 +141,8 @@
 
 <!-- ===== FOOTER ===== -->
 <footer>
-  © 2025 Tremendos Viajeros. Todos los derechos reservados.  
-  <br>Contacto: info@tremendosviajeros.com  
-  <br><br>
+  © 2025 Tremendos Viajeros. Todos los derechos reservados.<br>
+  Contacto: info@tremendosviajeros.com<br><br>
   <a href="aviso-legal.html">Aviso Legal</a> | 
   <a href="condiciones-generales.html">Condiciones Generales</a> | 
   <a href="politica-privacidad.html">Política de Privacidad</a> | 
@@ -162,6 +150,7 @@
   <a href="envios-devoluciones.html">Envíos y Devoluciones</a>
 </footer>
 
+<!-- JS -->
 <script src="script.js"></script>
 </body>
 </html>
