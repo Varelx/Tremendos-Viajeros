@@ -14,75 +14,29 @@ body, html {
 
 /* ===== VARIABLES ===== */
 :root {
-  --primary: #FF6F3C;      /* naranja vibrante */
-  --secondary: #FFD166;    /* amarillo energía */
-  --nature: #2E8B57;       /* verde bosque */
-  --river: #1E90FF;        /* azul río */
+  --primary: #FF6F3C;      
+  --secondary: #FFD166;    
+  --nature: #2E8B57;       
+  --river: #1E90FF;        
   --light: #FAF3E0;
   --dark: #2F2F2F;
   --transition: .3s ease-in-out;
 }
 
-/* ===== HEADER / PORTADA ===== */
-header {
-  position: relative;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: #fff;
-  background: url('img/portada.jpg') center/cover no-repeat;
-}
-
-header::before {
-  content: "";
-  position: absolute;
+/* ===== PRELOADER ===== */
+#preloader {
+  position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background: linear-gradient(135deg, rgba(46,139,87,0.5), rgba(30,144,255,0.5));
-  z-index: 0;
+  background: #FAF3E0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  transition: opacity 0.5s ease;
 }
 
-.header-content {
-  position: relative;
-  z-index: 1;
-  max-width: 90%;
-  transform: translateZ(0);
-}
-
-header h1 {
-  font-size: 4rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  animation: fadeInUp 1s forwards;
-}
-
-header p {
-  font-size: 1.5rem;
-  margin-bottom: 2rem;
-  animation: fadeInUp 1.2s forwards;
-}
-
-.cta-button {
-  display: inline-block;
-  padding: 1rem 2rem;
-  background: var(--primary);
-  color: #fff;
-  font-weight: 700;
-  border-radius: 50px;
-  cursor: pointer;
-  font-size: 1.2rem;
-  transition: all var(--transition);
-}
-
-.cta-button:hover {
-  transform: scale(1.1) translateY(-3px);
-  box-shadow: 0 0 20px var(--secondary);
-}
-
-/* ===== BARRA SUPERIOR ===== */
+/* ===== TOP BAR ===== */
 .top-bar {
   background: #000;
   color: #fff;
@@ -99,7 +53,7 @@ header p {
   margin-left: 10px;
 }
 
-/* ===== HEADER FIJO ===== */
+/* ===== HEADER ===== */
 header#main-header {
   position: fixed;
   top: 0; left: 0;
@@ -112,25 +66,14 @@ header#main-header {
 
 .header-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
-  transition: padding 0.3s ease;
-}
-
-header.shrink .header-container {
-  justify-content: space-between;
-  padding: 10px 40px;
 }
 
 .logo img {
   height: 50px;
-  transition: height 0.3s ease;
-  content: url('img/logo.png');
-}
-
-header.shrink .logo img {
-  height: 35px;
+  transition: height var(--transition);
 }
 
 nav {
@@ -144,28 +87,63 @@ nav a {
   font-weight: bold;
 }
 
-nav a:hover {
-  color: #005577;
-}
+nav a:hover { color: #005577; }
 
 /* ===== HERO ===== */
 .hero {
-  height: 90vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding-top: 120px; /* espacio para header */
+  padding-top: 120px; 
+  background: url('img/portada.jpg') center/cover no-repeat;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: linear-gradient(135deg, rgba(46,139,87,0.5), rgba(30,144,255,0.5));
+  z-index:0;
+}
+
+.header-content {
+  position: relative;
+  z-index:1;
+  max-width: 90%;
 }
 
 .header-content h1 {
   font-size: 3rem;
   color: #fff;
+  margin-bottom: 1rem;
 }
 
 .header-content p {
   font-size: 1.2rem;
   color: #fff;
+  margin-bottom: 2rem;
+}
+
+/* CTA BUTTON */
+.cta-button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 700;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all var(--transition);
+}
+
+.cta-button:hover {
+  transform: scale(1.1) translateY(-3px);
+  box-shadow: 0 0 20px var(--secondary);
 }
 
 /* ===== SECCIONES ===== */
@@ -206,14 +184,10 @@ section h2 {
 .activity p { color: #555; }
 .activity img { border-radius: 15px; max-height: 200px; object-fit: cover; width: 100%; }
 
-/* ===== COUNTDOWN ===== */
-.countdown {
-  margin: 1rem 0;
-  font-weight: 600;
-  color: var(--river);
-}
+/* COUNTDOWN */
+.countdown { margin: 1rem 0; font-weight: 600; color: var(--river); }
 
-/* ===== GALERÍA ===== */
+/* GALERÍA */
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
@@ -229,7 +203,7 @@ section h2 {
 
 .gallery img:hover { transform: scale(1.05); }
 
-/* ===== TESTIMONIOS ===== */
+/* TESTIMONIOS */
 .testimonios-grid {
   display: flex;
   flex-wrap: wrap;
@@ -250,7 +224,7 @@ section h2 {
 .testimonial:hover { transform: translateY(-5px); }
 .testimonial span { display: block; margin-top: 0.5rem; color: var(--primary); font-weight: 600; }
 
-/* ===== FAQ ===== */
+/* FAQ */
 .faq-item {
   background: #fff;
   padding: 1rem 1.5rem;
@@ -265,7 +239,7 @@ section h2 {
 .faq-item h4 { margin-bottom: 0.5rem; color: var(--primary); }
 .faq-item p { display: none; color: #555; }
 
-/* ===== FORMULARIO ===== */
+/* FORMULARIO */
 form {
   background: #fff;
   padding: 2rem;
@@ -307,7 +281,7 @@ form button:hover {
   margin-top: 1rem;
 }
 
-/* ===== INSTAGRAM ===== */
+/* INSTAGRAM */
 .instagram-block {
   background: linear-gradient(135deg, var(--primary), var(--secondary));
   color: #fff;
@@ -332,7 +306,7 @@ form button:hover {
   color: #fff;
 }
 
-/* ===== FOOTER ===== */
+/* FOOTER */
 footer {
   text-align: center;
   padding: 2rem;
@@ -341,19 +315,21 @@ footer {
   background: #fff;
 }
 
-/* ===== ANIMACIONES ===== */
+/* ANIMACIONES */
 @keyframes fadeInUp {
   0% { opacity: 0; transform: translateY(50px); }
   100% { opacity: 1; transform: translateY(0); }
 }
 
-/* ===== RESPONSIVE ===== */
+/* RESPONSIVE */
 @media(max-width:900px) {
-  header h1 { font-size: 3rem; }
-  header p { font-size: 1.2rem; }
+  .header-content h1 { font-size: 2.5rem; }
+  .header-content p { font-size: 1.1rem; }
 }
 
 @media(max-width:600px) {
   .activities-grid { grid-template-columns: 1fr; }
   .gallery { grid-template-columns: 1fr; }
+  .header-container { flex-direction: column; gap: 15px; padding: 10px 20px; }
+  nav { flex-direction: column; gap: 10px; }
 }
