@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tremendos Viajeros - Inicio</title>
-<link rel="stylesheet" href="css/style.css">
-<link rel="icon" href="favicon/favicon.ico">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tremendos Viajeros - Inicio</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="favicon/favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
+
 <body>
 
 <!-- MENÚ -->
@@ -30,119 +31,83 @@
   </div>
 </nav>
 
-<!-- resto de tu contenido ... -->
+<!-- HEADER con video -->
+<header class="hero">
+  <div class="video-container">
+    <iframe 
+      src="https://www.youtube.com/embed/U2rF_rR9NNE?start=1&end=31&autoplay=1&mute=1&loop=1&playlist=U2rF_rR9NNE&controls=0&showinfo=0&modestbranding=1"
+      title="Video Tremendos Viajeros"
+      frameborder="0"
+      allow="autoplay; fullscreen"
+      allowfullscreen>
+    </iframe>
+  </div>
+  <div class="header-content">
+    <h1>Tremendos Viajeros</h1>
+    <p>Vive experiencias únicas de turismo activo en Galicia.</p>
+    <a href="#leadForm" class="cta-button">¡Únete a la próxima aventura!</a>
+  </div>
+</header>
 
+<!-- GALERÍA -->
+<section id="galeria">
+  <h2>Galería de Experiencias</h2>
+  <div class="gallery">
+    <img src="img/foto1.jpg" alt="Trekking">
+    <img src="img/foto2.jpg" alt="Senderismo en Galicia">
+    <img src="img/foto3.jpg" alt="Montañismo">
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="testimonios">
+  <h2>Lo que dicen nuestros aventureros</h2>
+  <div class="testimonios-grid">
+    <div class="testimonial">
+      <i class="fa-solid fa-quote-left"></i>
+      <p>"Una experiencia inolvidable."</p>
+      <span>- Ana V.</span>
+    </div>
+    <div class="testimonial">
+      <i class="fa-solid fa-quote-left"></i>
+      <p>"Me habéis enganchado a la orientación."</p>
+      <span>- Iban P.</span>
+    </div>
+    <div class="testimonial">
+      <i class="fa-solid fa-quote-left"></i>
+      <p>"Kayak y senderismo combinados, todo perfecto."</p>
+      <span>- Carlos M.</span>
+    </div>
+  </div>
+</section>
+
+<!-- FORMULARIO -->
+<section class="form-section">
+  <h2>Reserva tu plaza</h2>
+  <form id="leadForm">
+    <input type="text" name="nombre" placeholder="Nombre" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="tel" name="telefono" placeholder="Teléfono" required>
+    <textarea name="mensaje1" placeholder="Cómo nos conociste (opcional)" rows="3"></textarea>
+    <textarea name="mensaje2" placeholder="Más info (opcional)" rows="3"></textarea>
+    <button type="submit">¡Quiero la próxima aventura!</button>
+    <div class="confirmation">¡Recibido! Nos pondremos en contacto.</div>
+  </form>
+</section>
+
+<!-- INSTAGRAM -->
+<section class="instagram-block">
+  <h2>¿Quieres ver más aventuras en acción?</h2>
+  <p>Síguenos en Instagram y vive la experiencia Tremendos Viajeros.</p>
+  <a href="https://instagram.com/tremendosviajeros" target="_blank" class="cta-button">📸 Ir a Instagram</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Tremendos Viajeros. Todos los derechos reservados.</p>
+  <p><i class="fa-solid fa-envelope"></i> info@tremendosviajeros.com</p>
+</footer>
+
+<script src="js/main.js"></script>
 </body>
 </html>
-
-
-  <!-- HEADER -->
-  <header class="hero">
-    <div class="header-content">
-      <h1>Tremendos Viajeros</h1>
-      <p>Vive experiencias únicas de turismo activo en Galicia.</p>
-      <a href="#leadForm" class="cta-button">¡Únete a la próxima aventura!</a>
-    </div>
-  </header>
-
-  <!-- GALERÍA -->
-  <section class="seccion" id="galeria">
-    <div class="section-content">
-      <h2>Galería de Experiencias</h2>
-      <div class="gallery">
-        <img src="img/foto1.jpg" alt="Trekking">
-        <img src="img/foto2.jpg" alt="Senderismo en Galicia">
-        <img src="img/foto3.jpg" alt="Montañismo">
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIOS -->
-  <section class="testimonios seccion">
-    <h2>Lo que dicen nuestros aventureros</h2>
-    <div class="testimonios-grid">
-      <div class="testimonial">
-        <i class="fa-solid fa-quote-left"></i>
-        <p>"Una experiencia inolvidable."</p>
-        <span>- Ana V.</span>
-      </div>
-      <div class="testimonial">
-        <i class="fa-solid fa-quote-left"></i>
-        <p>"Me habéis enganchado a la orientación."</p>
-        <span>- Iban P.</span>
-      </div>
-      <div class="testimonial">
-        <i class="fa-solid fa-quote-left"></i>
-        <p>"Kayak y senderismo combinados, todo perfecto."</p>
-        <span>- Carlos M.</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq" class="seccion">
-    <h2>Preguntas Frecuentes</h2>
-    <div class="faq-item">
-      <h4><i class="fa-solid fa-circle-question"></i> ¿Qué incluye el pack?</h4>
-      <p>Actividades guiadas, seguro y materiales.</p>
-    </div>
-    <div class="faq-item">
-      <h4><i class="fa-solid fa-circle-question"></i> ¿Necesito experiencia previa?</h4>
-      <p>No, están adaptadas a todos los niveles.</p>
-    </div>
-  </section>
-
-  <!-- FORMULARIO -->
-  <section class="form-section seccion">
-    <h2>Reserva tu plaza</h2>
-    <form id="leadForm">
-      <input type="text" name="nombre" placeholder="Nombre" required>
-      <input type="email" name="email" placeholder="Email" required>
-      <input type="tel" name="telefono" placeholder="Teléfono" required>
-      <textarea name="mensaje1" placeholder="Cómo nos conociste (opcional)" rows="3"></textarea>
-      <textarea name="mensaje2" placeholder="Más info (opcional)" rows="3"></textarea>
-      <button type="submit">¡Quiero la próxima aventura!</button>
-      <div class="confirmation">¡Recibido! Nos pondremos en contacto.</div>
-    </form>
-  </section>
-
-  <!-- INSTAGRAM -->
-  <section class="instagram-block seccion">
-    <h2>¿Quieres ver más aventuras en acción?</h2>
-    <p>Síguenos en Instagram y vive la experiencia Tremendos Viajeros.</p>
-    <a href="https://instagram.com/tremendosviajeros" target="_blank" class="cta-button">📸 Ir a Instagram</a>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="seccion">
-    <p>© 2025 Tremendos Viajeros. Todos los derechos reservados.</p>
-    <p><i class="fa-solid fa-envelope"></i> info@tremendosviajeros.com</p>
-    <div class="footer-links">
-      <a href="bases/aviso-legal.html">Aviso Legal</a> | 
-      <a href="bases/condiciones-generales.html">Condiciones Generales</a> | 
-      <a href="bases/politica-privacidad.html">Política de Privacidad</a> | 
-      <a href="bases/politica-cookies.html">Política de Cookies</a> | 
-      <a href="bases/envios-devoluciones.html">Envíos y Devoluciones</a>
-    </div>
-  </footer>
-
-  <!-- JS -->
-  <script src="js/main.js"></script>
-  <script>
-    // Detectar página actual y resaltar menú activo
-    const currentPage = window.location.pathname.split("/").pop();
-    const navLinks = document.querySelectorAll('.nav-links a');
-    navLinks.forEach(link => {
-      const linkPage = link.getAttribute('href');
-      if(linkPage === currentPage) {
-        link.classList.add('active');
-      }
-    });
-  </script>
-
-</body>
-</html>
-
-
-
-
