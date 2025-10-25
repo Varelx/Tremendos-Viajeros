@@ -31,7 +31,7 @@
   </div>
 </nav>
 
-<!-- HEADER con video -->
+<!-- HEADER con vídeo -->
 <header class="hero">
   <div class="video-container">
     <iframe 
@@ -109,5 +109,12 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script>
+  // Resaltar menú activo
+  const currentPage = window.location.pathname.split("/").pop();
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    if(link.getAttribute('href') === currentPage) link.classList.add('active');
+  });
+</script>
 </body>
 </html>
