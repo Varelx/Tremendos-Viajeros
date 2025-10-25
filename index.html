@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tremendos Viajeros - Inicio</title>
+  <meta name="description" content="Vive experiencias únicas de turismo activo en Galicia. Trekking, kayak, orientación y más con Tremendos Viajeros. ¡Reserva tu aventura!">
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="favicon/favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-
 <body>
 
 <!-- MENÚ -->
@@ -20,71 +20,152 @@
       <span>Tremendos Viajeros</span>
     </a>
     <ul class="nav-links">
-      <li><a href="index.html">Inicio</a></li>
+      <li><a href="index.html" class="active">Inicio</a></li>
       <li><a href="experiencias.html">Experiencias</a></li>
       <li><a href="formacion.html">Formación</a></li>
       <li><a href="nosotros.html">Nosotros</a></li>
       <li><a href="blog.html">Blog</a></li>
       <li><a href="contacto.html">Contacto</a></li>
+      <li><a href="productos.html">Productos</a></li>
     </ul>
     <div class="nav-toggle"><i class="fa-solid fa-bars"></i></div>
   </div>
 </nav>
 
-<!-- HEADER CINEMATOGRÁFICO -->
+<!-- BOTÓN FLOTANTE DE RESERVA -->
+<a href="#leadForm" class="floating-cta"><i class="fa-solid fa-plane-departure"></i> Reserva Ahora</a>
+
+<!-- HEADER / HERO -->
 <header class="hero">
-  <div class="video-container">
-    <iframe 
-      src="https://www.youtube.com/embed/U2rF_rR9NNE?start=1&end=31&autoplay=1&mute=1&loop=1&playlist=U2rF_rR9NNE&controls=0&showinfo=0&modestbranding=1"
-      title="Video Tremendos Viajeros"
-      frameborder="0"
-      allow="autoplay; fullscreen"
-      allowfullscreen>
-    </iframe>
-  </div>
   <div class="header-content">
     <h1>Tremendos Viajeros</h1>
-    <p>Vive experiencias únicas de turismo activo en Galicia.</p>
-    <a href="#leadForm" class="cta-button">¡Únete a la próxima aventura!</a>
+    <p>Vive experiencias únicas de turismo activo en Galicia</p>
+    <div class="hero-buttons">
+      <a href="#leadForm" class="cta-button">¡Únete a la próxima aventura!</a>
+      <a href="https://instagram.com/tremendosviajeros" target="_blank" class="cta-button-social"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@tremendosviajeros" target="_blank" class="cta-button-social"><i class="fa-brands fa-tiktok"></i></a>
+      <a href="https://www.youtube.com/@tremendosviajeros" target="_blank" class="cta-button-social"><i class="fa-brands fa-youtube"></i></a>
+    </div>
   </div>
 </header>
 
-<!-- GALERÍA -->
-<section id="galeria">
-  <h2>Galería de Experiencias</h2>
-  <div class="gallery">
-    <img src="img/foto1.jpg" alt="Trekking">
-    <img src="img/foto2.jpg" alt="Senderismo en Galicia">
-    <img src="img/foto3.jpg" alt="Montañismo">
+<!-- EXPERIENCIAS -->
+<section id="experiencias" class="seccion">
+  <h2>Próximas Experiencias</h2>
+  <div class="slider" id="experiencias-slider">
+    <!-- Cada slide -->
+    <div class="slide">
+      <img src="img/experiencia1.jpg" alt="Trekking en Galicia" class="slide-img">
+      <div class="slide-content">
+        <h3>Trekking por los bosques de Galicia</h3>
+        <p>Descubre rutas increíbles y paisajes únicos. Nivel: Medio.</p>
+        <a href="#leadForm" class="cta-button">¡Apúntate!</a>
+      </div>
+    </div>
+    <div class="slide">
+      <img src="img/experiencia2.jpg" alt="Kayak en la ría" class="slide-img">
+      <div class="slide-content">
+        <h3>Kayak por la ría gallega</h3>
+        <p>Disfruta del mar y la naturaleza en una aventura guiada. Nivel: Fácil.</p>
+        <a href="#leadForm" class="cta-button">¡Apúntate!</a>
+      </div>
+    </div>
+    <!-- Más slides según tus futuras experiencias -->
   </div>
 </section>
 
-<!-- TESTIMONIOS -->
-<section class="testimonios">
-  <h2>Lo que dicen nuestros aventureros</h2>
-  <div class="testimonios-grid">
-    <div class="testimonial">
-      <i class="fa-solid fa-quote-left"></i>
-      <p>"Una experiencia inolvidable."</p>
-      <span>- Ana V.</span>
+<!-- FORMACIÓN -->
+<section id="formacion" class="seccion">
+  <h2>Formaciones Disponibles</h2>
+  <div class="slider" id="formacion-slider">
+    <div class="slide">
+      <img src="img/curso1.jpg" alt="Curso de Orientación" class="slide-img">
+      <div class="slide-content">
+        <h3>Curso de Orientación en la Naturaleza</h3>
+        <p>Aprende a orientarte con mapa y brújula en entornos reales.</p>
+        <a href="#leadForm" class="cta-button">¡Inscríbete!</a>
+      </div>
     </div>
-    <div class="testimonial">
-      <i class="fa-solid fa-quote-left"></i>
-      <p>"Me habéis enganchado a la orientación."</p>
-      <span>- Iban P.</span>
+    <div class="slide">
+      <img src="img/curso2.jpg" alt="Curso de Supervivencia" class="slide-img">
+      <div class="slide-content">
+        <h3>Curso de Supervivencia Básica</h3>
+        <p>Prepárate para cualquier aventura con técnicas esenciales de supervivencia.</p>
+        <a href="#leadForm" class="cta-button">¡Inscríbete!</a>
+      </div>
     </div>
-    <div class="testimonial">
-      <i class="fa-solid fa-quote-left"></i>
-      <p>"Kayak y senderismo combinados, todo perfecto."</p>
-      <span>- Carlos M.</span>
+    <!-- Más cursos -->
+  </div>
+</section>
+
+<!-- NOSOTROS -->
+<section id="nosotros" class="seccion">
+  <h2>Conócenos</h2>
+  <p>Somos guías titulados con pasión por la naturaleza y Galicia. Combinamos seguridad, diversión y aprendizaje en cada experiencia. ¡Nada nos para!</p>
+  <div class="team-grid">
+    <div class="team-member">
+      <img src="img/guia1.jpg" alt="Guía 1">
+      <h3>Nombre Guía 1</h3>
+      <p>Especialista en trekking y orientación.</p>
+    </div>
+    <div class="team-member">
+      <img src="img/guia2.jpg" alt="Guía 2">
+      <h3>Nombre Guía 2</h3>
+      <p>Experto en kayak y actividades acuáticas.</p>
     </div>
   </div>
 </section>
 
-<!-- FORMULARIO -->
-<section class="form-section">
-  <h2>Reserva tu plaza</h2>
-  <form id="leadForm">
+<!-- BLOG -->
+<section id="blog" class="seccion">
+  <h2>Blog y Curiosidades</h2>
+  <div class="blog-grid">
+    <article class="blog-item">
+      <img src="img/blog1.jpg" alt="Aventura pasada 1">
+      <h3>Explorando Galicia: Ruta por la Costa</h3>
+      <p>Descubre cómo fue nuestra última aventura por la costa gallega.</p>
+      <a href="blog.html" class="cta-button-blog">Leer más</a>
+    </article>
+    <article class="blog-item">
+      <img src="img/blog2.jpg" alt="Aventura pasada 2">
+      <h3>Kaiak y Senderismo combinados</h3>
+      <p>Una experiencia que une mar y montaña para todos los niveles.</p>
+      <a href="blog.html" class="cta-button-blog">Leer más</a>
+    </article>
+  </div>
+</section>
+
+<!-- PRODUCTOS -->
+<section id="productos" class="seccion">
+  <h2>Productos y Descargas</h2>
+  <div class="products-grid">
+    <div class="product">
+      <h3>Free: Check List de Viaje</h3>
+      <p>Descarga gratis nuestro checklist esencial para cualquier aventura.</p>
+      <a href="downloads/checklist.pdf" class="cta-button">Descargar</a>
+    </div>
+    <div class="product">
+      <h3>Free: Documento PDF Orientación</h3>
+      <p>Aprende lo básico de orientación con nuestro PDF gratuito.</p>
+      <a href="downloads/orientacion.pdf" class="cta-button">Descargar</a>
+    </div>
+    <div class="product">
+      <h3>10€: EBook de Viajes</h3>
+      <p>Guía descargable con rutas y consejos de aventura.</p>
+      <a href="#leadForm" class="cta-button">Comprar</a>
+    </div>
+    <div class="product">
+      <h3>50€: Curso Online de Orientación</h3>
+      <p>Curso completo para aprender técnicas de orientación profesional.</p>
+      <a href="#leadForm" class="cta-button">Comprar</a>
+    </div>
+  </div>
+</section>
+
+<!-- FORMULARIO / LEADS -->
+<section id="leadForm" class="form-section seccion">
+  <h2>Reserva tu plaza o contacto</h2>
+  <form id="contactForm" method="post">
     <input type="text" name="nombre" placeholder="Nombre" required>
     <input type="email" name="email" placeholder="Email" required>
     <input type="tel" name="telefono" placeholder="Teléfono" required>
@@ -95,17 +176,37 @@
   </form>
 </section>
 
+<!-- FAQ -->
+<section id="faq" class="seccion">
+  <h2>Preguntas Frecuentes</h2>
+  <div class="faq-item">
+    <h4><i class="fa-solid fa-circle-question"></i> ¿Qué incluye el pack?</h4>
+    <p>Actividades guiadas, seguro y materiales.</p>
+  </div>
+  <div class="faq-item">
+    <h4><i class="fa-solid fa-circle-question"></i> ¿Necesito experiencia previa?</h4>
+    <p>No, están adaptadas a todos los niveles.</p>
+  </div>
+</section>
+
 <!-- INSTAGRAM -->
-<section class="instagram-block">
+<section class="instagram-block seccion">
   <h2>¿Quieres ver más aventuras en acción?</h2>
   <p>Síguenos en Instagram y vive la experiencia Tremendos Viajeros.</p>
   <a href="https://instagram.com/tremendosviajeros" target="_blank" class="cta-button">📸 Ir a Instagram</a>
 </section>
 
 <!-- FOOTER -->
-<footer>
+<footer class="seccion">
   <p>© 2025 Tremendos Viajeros. Todos los derechos reservados.</p>
   <p><i class="fa-solid fa-envelope"></i> info@tremendosviajeros.com</p>
+  <div class="footer-links">
+    <a href="bases/aviso-legal.html">Aviso Legal</a> | 
+    <a href="bases/condiciones-generales.html">Condiciones Generales</a> | 
+    <a href="bases/politica-privacidad.html">Política de Privacidad</a> | 
+    <a href="bases/politica-cookies.html">Política de Cookies</a> | 
+    <a href="bases/envios-devoluciones.html">Envíos y Devoluciones</a>
+  </div>
 </footer>
 
 <script src="js/main.js"></script>
